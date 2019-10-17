@@ -18,10 +18,9 @@ public class Model {
     private String filepath;
 
     public Model() {
-        lectureFichier("./Biblio_1.xml");
     }
 
-    public void lectureFichier(String filepath) {
+    public void readFile(String filepath) {
         try {
             this.filepath = filepath;
             File file = new File(filepath);
