@@ -1,4 +1,4 @@
-package app;
+package edu.xml.app;
 
 import java.awt.event.*;
 

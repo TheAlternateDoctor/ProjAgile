@@ -1,4 +1,4 @@
-package app;
+package edu.xml.app;
 
 import javax.swing.*;
 import java.awt.*;
