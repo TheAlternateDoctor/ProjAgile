@@ -1,11 +1,11 @@
-
+package app;
 
 public class Main {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-       Controller controller=new Controller();
-      controller.control();
+    Controller controller = new Controller();
+    controller.control();
 
-    }
+  }
 }

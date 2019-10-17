@@ -1,4 +1,5 @@
-public class Model {
+package app;
 
+public class Model {
 
 }
