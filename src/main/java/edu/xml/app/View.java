@@ -2,6 +2,7 @@ package edu.xml.app;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
 
 public class View extends JFrame { // Mainwindow
 
@@ -25,7 +26,7 @@ public class View extends JFrame { // Mainwindow
     private JFrame Details;
     private JButton adds;
     private JButton delete;
-    ////////////////////////////////////////////////////
+
     // addFrame
     private JFrame adFileFrame;
     private Container containerOpen;
@@ -70,6 +71,14 @@ public class View extends JFrame { // Mainwindow
         this.mainWindow.setVisible(true);
     }
 
+    public JMenuItem getOpenfile() {
+        return Openfile;
+    }
+
+    public void setOpenfile(JMenuItem openfile) {
+        Openfile = openfile;
+    }
+
     public JMenuItem getNewfile() {
         return Newfile;
     }
@@ -85,12 +94,16 @@ public class View extends JFrame { // Mainwindow
         adFileFrame.setSize(400, 200);
 
         containerOpen = new Container();
-        containerOpen.setLayout(new GridLayout(6, 1));
-        textTest = new JLabel("TEST");
-        containerOpen.add(textTest);
+        containerOpen.setLayout(new GridLayout(1, 1));
+        final JFileChooser fc = new JFileChooser();
+        containerOpen.add(fc);
 
         adFileFrame.getContentPane().add(containerOpen);
         adFileFrame.setVisible(true);
+    }
+
+    public void table(String Title, String Writer, int Year, int Row, int Column) {
 
     }
+
 }

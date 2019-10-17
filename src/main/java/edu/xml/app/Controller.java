@@ -15,11 +15,11 @@ public class Controller {
     }
 
     public void control() {
-        System.out.println("i'm here debug1");
-        view.getNewfile().addActionListener(new ActionListener() {
+
+        view.getOpenfile().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("i'm here debug 2 ");
+
                 view.Openfile();
             }
         });
