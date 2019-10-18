@@ -21,24 +21,19 @@ public class Model {
     private Bibliotheque bibliotheque;
 
     public Model() {
-        /*List<String> test = new ArrayList<>();
-        test.add("titre");
-        test.add("nom");
-        test.add("prenom");
-        test.add("presentation");
-        test.add("2019");
-        test.add("1");
-        test.add("1");
-        readFile("./Biblio_test.xml");
-        addLivre(test);
-        saveFile();*/
+        /*
+         * List<String> test = new ArrayList<>(); test.add("titre"); test.add("nom");
+         * test.add("prenom"); test.add("presentation"); test.add("2019");
+         * test.add("1"); test.add("1"); readFile("./Biblio_test.xml"); addLivre(test);
+         * saveFile();
+         */
     }
 
     public void readFile(String filepath) {
         try {
             this.filepath = filepath;
             File file = new File(filepath);
-            if(file.exists() && filepath != ""){
+            if (file.exists() && filepath != "") {
                 JAXBContext jc = JAXBContext.newInstance("edu.xml.helpers");
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 // unmarshaller.setValidating(true);
@@ -46,8 +41,7 @@ public class Model {
                 bibliotheque = (Bibliotheque) unmarshaller.unmarshal(file);
 
                 livres = bibliotheque.getLivre();
-            }
-            else{
+            } else {
                 ObjectFactory objFactory = new ObjectFactory();
                 bibliotheque = (Bibliotheque) objFactory.createBibliotheque();
                 livres = bibliotheque.getLivre();
@@ -114,5 +108,19 @@ public class Model {
         newLivre.setColonne(Short.parseShort(livre.get(5)));
         newLivre.setRangee(Short.parseShort(livre.get(6)));
         livres.add(newLivre);
+    }
+
+    public void modifyLivre(int index, List<String> livre) {
+        Livre newLivre = new Livre();
+        Auteur newAuteur = new Auteur();
+        newLivre.setTitre(livre.get(0));
+        newAuteur.setNom(livre.get(1));
+        newAuteur.setPrenom(livre.get(2));
+        newLivre.setAuteur(newAuteur);
+        newLivre.setPresentation(livre.get(3));
+        newLivre.setParution(Integer.parseInt(livre.get(4)));
+        newLivre.setColonne(Short.parseShort(livre.get(5)));
+        newLivre.setRangee(Short.parseShort(livre.get(6)));
+        livres.set(index, newLivre);
     }
 }
