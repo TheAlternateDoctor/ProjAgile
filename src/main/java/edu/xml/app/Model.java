@@ -66,6 +66,20 @@ public class Model {
         }
     }
 
+    public boolean saveFile(String filepath) {
+        JAXBContext jaxbContext;
+        try {
+            jaxbContext = JAXBContext.newInstance("edu.xml.helpers");
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, new Boolean(true));
+            marshaller.marshal(bibliotheque, new File(filepath));
+            return true;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public List<List<String>> getLivres() {
         List<List<String>> convertedLivres = new ArrayList<>();
         for (int i = 0; i < livres.size(); i++) {
