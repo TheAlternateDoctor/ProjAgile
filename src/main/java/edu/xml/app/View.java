@@ -4,7 +4,7 @@ import java.awt.*;
 import java.lang.reflect.Array;
 
 public class View extends JFrame { //Mainwindow
-//Attribut
+    //Attribut
     private JFrame mainWindow;
 
     private Container container;
@@ -20,7 +20,7 @@ public class View extends JFrame { //Mainwindow
     private JMenuItem Newfile;
     private JMenuItem Openfile;
 
-       // Affichage fichier xml //
+    // Affichage fichier xml //
     private JTable table;
     enum Sport {
         FOOTBALL,
@@ -90,7 +90,7 @@ public class View extends JFrame { //Mainwindow
         mainWindow.getContentPane().add(container,BorderLayout.NORTH);
         table();
         Container containerButton=new Container();
-       containerButton.setLayout(new GridLayout(1,2));
+        containerButton.setLayout(new GridLayout(1,2));
         containerButton.add(adds);
         containerButton.add(delete);
         mainWindow.getContentPane().add(containerButton,BorderLayout.SOUTH);
@@ -116,7 +116,7 @@ public class View extends JFrame { //Mainwindow
     }
 
 
-   public JButton getAdds(){ return adds;};
+    public JButton getAdds(){ return adds;};
 
     public String Openfile(){
 
@@ -141,7 +141,7 @@ public class View extends JFrame { //Mainwindow
         containerOpen.add(fc);
 
 
-        
+
         adFileFrame.getContentPane().add(containerOpen);
         adFileFrame.setVisible(true);
         table();
@@ -159,7 +159,7 @@ public class View extends JFrame { //Mainwindow
 
         JTable tableau = new JTable(donnees, entetes);
 
-       System.out.println("Debug");
+        System.out.println("Debug");
         container.add(tableau.getTableHeader());
         container.add(tableau);
         mainWindow.getContentPane().add(container,BorderLayout.CENTER);
@@ -196,12 +196,12 @@ public class View extends JFrame { //Mainwindow
         JTextField setTitre=new JTextField();
         JTextField setAuteur=new JTextField();
         JTextField setAnnee=new JTextField();
-       Container containAjouter=new Container();
-       containAjouter.setLayout(new GridLayout(4,2));
-       containAjouter.add(Titre);
-       containAjouter.add(setTitre);
-       containAjouter.add(Auteur);
-       containAjouter.add(setAuteur);
+        Container containAjouter=new Container();
+        containAjouter.setLayout(new GridLayout(4,2));
+        containAjouter.add(Titre);
+        containAjouter.add(setTitre);
+        containAjouter.add(Auteur);
+        containAjouter.add(setAuteur);
 
         Details.getContentPane().add(containAjouter);
         Details.setVisible(true);
