@@ -80,19 +80,15 @@ public class Model {
         }
     }
 
-    public List<List<String>> getLivres() {
-        List<List<String>> convertedLivres = new ArrayList<>();
+    public String[][] getLivres() {
+        String[][] convertedLivres = { {} };
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
-            List<String> convertedLivre = new ArrayList<>();
-            convertedLivre.add(livre.getTitre());
-            convertedLivre.add(livre.getAuteur().getNom());
-            convertedLivre.add(livre.getAuteur().getPrenom());
-            convertedLivre.add(livre.getPresentation());
-            convertedLivre.add(String.valueOf(livre.getParution()));
-            convertedLivre.add(String.valueOf(livre.getColonne()));
-            convertedLivre.add(String.valueOf(livre.getRangee()));
-            convertedLivres.add(convertedLivre);
+            convertedLivres[i][0] = livre.getTitre();
+            convertedLivres[i][1] = livre.getAuteur().getNom();
+            convertedLivres[i][2] = livre.getAuteur().getPrenom();
+            convertedLivres[i][3] = livre.getPresentation();
+            convertedLivres[i][4] = String.valueOf(livre.getParution());
         }
         return convertedLivres;
     }
