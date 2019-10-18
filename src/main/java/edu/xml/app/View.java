@@ -115,7 +115,7 @@ public class View extends JFrame { // Mainwindow
     public String Openfile() {
 
         adFileFrame = new JFrame("Nouveau fichier");
-        adFileFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        adFileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         adFileFrame.setSize(400, 200);
 
         containerOpen = new Container();
@@ -168,7 +168,7 @@ System.out.println("Debug");
     public void Ajouter() {
         Details = new JFrame("Ajouter");
 
-        Details.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Details.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Details.setSize(400, 600);
         JLabel Titre = new JLabel("Titre");
         JLabel Auteur = new JLabel("Auteur");
