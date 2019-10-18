@@ -21,12 +21,8 @@ public class Model {
     private Bibliotheque bibliotheque;
 
     public Model() {
-        /*
-         * List<String> test = new ArrayList<>(); test.add("titre"); test.add("nom");
-         * test.add("prenom"); test.add("presentation"); test.add("2019");
-         * test.add("1"); test.add("1"); readFile("./Biblio_test.xml"); addLivre(test);
-         * saveFile();
-         */
+        readFile("./Biblio_1.xml");
+        getLivres();
     }
 
     public void readFile(String filepath) {
@@ -81,7 +77,7 @@ public class Model {
     }
 
     public String[][] getLivres() {
-        String[][] convertedLivres = { {} };
+        String[][] convertedLivres = new String[livres.size()][5];
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
             convertedLivres[i][0] = livre.getTitre();
@@ -132,5 +128,9 @@ public class Model {
         newLivre.setColonne(Short.parseShort(livre.get(5)));
         newLivre.setRangee(Short.parseShort(livre.get(6)));
         livres.set(index, newLivre);
+    }
+
+    public void removeLivre(int index) {
+        livres.remove(livres.get(index));
     }
 }
