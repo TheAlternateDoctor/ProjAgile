@@ -151,7 +151,7 @@ public class View extends JFrame { // Mainwindow
         container.add(tableau);
         mainWindow.getContentPane().add(container, BorderLayout.CENTER);
         SwingUtilities.updateComponentTreeUI(mainWindow);
-
+System.out.println("Debug");
     }
 
     public void table() {
