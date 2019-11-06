@@ -23,14 +23,14 @@
         <rangee>2</rangee>
     </livre>
     <livre>
-        <titre>Eragon</titre>
+        <titre>test</titre>
         <auteur>
-            <nom>Paolini</nom>
-            <prenom>Christopher</prenom>
+            <nom>test</nom>
+            <prenom>test</prenom>
         </auteur>
-        <presentation>Ce livre est une introduction au schema XSD</presentation>
-        <parution>2001</parution>
-        <colonne>5</colonne>
-        <rangee>2</rangee>
+        <presentation>test</presentation>
+        <parution>1996</parution>
+        <colonne>0</colonne>
+        <rangee>0</rangee>
     </livre>
 </bibliotheque>

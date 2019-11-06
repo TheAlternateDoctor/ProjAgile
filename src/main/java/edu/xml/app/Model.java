@@ -81,10 +81,9 @@ public class Model {
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
             convertedLivres[i][0] = livre.getTitre();
-            convertedLivres[i][1] = livre.getAuteur().getNom();
-            convertedLivres[i][2] = livre.getAuteur().getPrenom();
-            convertedLivres[i][3] = livre.getPresentation();
-            convertedLivres[i][4] = String.valueOf(livre.getParution());
+            convertedLivres[i][1] = livre.getAuteur().getNom() + " " + livre.getAuteur().getPrenom()  ;
+            convertedLivres[i][2] = livre.getPresentation();
+            convertedLivres[i][3] = String.valueOf(livre.getParution());
         }
         return convertedLivres;
     }
@@ -111,8 +110,8 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(Short.parseShort(livre.get(5)));
-        newLivre.setRangee(Short.parseShort(livre.get(6)));
+        newLivre.setColonne((short)0);
+        newLivre.setRangee((short)0);
         livres.add(newLivre);
     }
 

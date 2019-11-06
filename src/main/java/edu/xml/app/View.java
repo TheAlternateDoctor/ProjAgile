@@ -1,7 +1,9 @@
 package edu.xml.app;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.lang.reflect.Array;
 
@@ -15,12 +17,19 @@ public class View extends JFrame { // Mainwindow
     private JMenu Menusave;
     private JMenu About;
     private JMenuItem shortdesc;
+    private  JButton Confirmer;
     private JMenuBar Bar;
     private JMenuItem save;
     private JMenuItem saveas;
     private JMenuItem End;
     private JMenuItem Newfile;
     private JMenuItem Openfile;
+    private JTable tableau;
+    JTextField setTitre;
+    JTextField setNomAuteur;
+    JTextField setPrenomAuteur;
+    JTextField setPresentation;
+    JTextField setParution;
 
     // Affichage fichier xml //
     private JTable table;
@@ -32,13 +41,11 @@ public class View extends JFrame { // Mainwindow
     private JFrame Details;
     private JButton adds;
     private JButton delete;
-
     // addFrame
     private JFrame adFileFrame;
     private Container containerOpen;
     private JLabel textTest;
     /////////////////////////////////////////
-
     // méthode
 
     public View() throws HeadlessException {
@@ -48,8 +55,8 @@ public class View extends JFrame { // Mainwindow
 
         mainWindow.setSize(800, 400);
         container = new Container();
-        container.setLayout(new GridLayout(6, 6));
-
+        container.setLayout(new BorderLayout(6, 3));
+        container.setSize(580,250);
         // Menu principale
         Bar = new JMenuBar();
         // Premier sous menu
@@ -85,19 +92,27 @@ public class View extends JFrame { // Mainwindow
         adds.setPreferredSize(new Dimension(40, 40));
         delete.setPreferredSize(new Dimension(40, 40));
         mainWindow.getContentPane().add(container, BorderLayout.NORTH);
-        table();
+
         Container containerButton = new Container();
         containerButton.setLayout(new GridLayout(1, 2));
         containerButton.add(adds);
         containerButton.add(delete);
         mainWindow.getContentPane().add(containerButton, BorderLayout.SOUTH);
-
+         Confirmer=new JButton("Confirmer");
         // Print
         this.mainWindow.setVisible(true);
     }
 
     public JMenuItem getEnd() {
         return End;
+    }
+
+    public JButton getConfirmer() {
+        return Confirmer;
+    }
+
+    public JFrame getMainWindow() {
+        return mainWindow;
     }
 
     public JMenuItem getOpenfile() {
@@ -113,11 +128,6 @@ public class View extends JFrame { // Mainwindow
     };
 
     public String Openfile() {
-
-        adFileFrame = new JFrame("Nouveau fichier");
-        adFileFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        adFileFrame.setSize(400, 200);
-
         containerOpen = new Container();
         containerOpen.setLayout(new GridLayout(1, 1));
         final JFileChooser fc = new JFileChooser();
@@ -130,12 +140,42 @@ public class View extends JFrame { // Mainwindow
             System.out.println("You chose to open this file: " + fc.getSelectedFile().getName());
         }
 
+
+
+
+
         containerOpen.add(fc);
 
-        adFileFrame.getContentPane().add(containerOpen);
-        adFileFrame.setVisible(true);
-        table();
-        return fc.getSelectedFile().getName();
+
+        return fc.getSelectedFile().getAbsolutePath();
+    }
+
+    public JTextField getSetTitre() {
+        return setTitre;
+    }
+
+    public JTextField getSetAuteur() {
+        return setNomAuteur;
+    }
+
+    public JTextField getSetNomAuteur() {
+        return setNomAuteur;
+    }
+
+    public JTextField getSetPrenomAuteur() {
+        return setPrenomAuteur;
+    }
+
+    public JTextField getSetPresentation() {
+        return setPresentation;
+    }
+
+    public JTextField getSetParution() {
+        return setParution;
+    }
+
+    public JButton getDelete() {
+        return delete;
     }
 
     public void newfile() {
@@ -154,10 +194,39 @@ public class View extends JFrame { // Mainwindow
 System.out.println("Debug");
     }
 
-    public void table() {
+    public void table(String[][] donnees) {
+        // Tableau XML
+        final String[] entetes = { "Titre", "Auteur", "presentation", "parution" };
 
+        tableau = new JTable();
+       DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
+       tableModel.setColumnIdentifiers(entetes);
+       for(int i = 0;i<donnees.length;i++){
+           tableModel.addRow(donnees[i]);
+       }
+       JScrollPane pane=new JScrollPane(tableau);
+
+
+        container.add(pane);
+        mainWindow.getContentPane().add(container,BorderLayout.NORTH);
+        SwingUtilities.updateComponentTreeUI(mainWindow);
+    }
+    public void addTable(String[] donnees){
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
+        tableModel.addRow(donnees);
+        tableModel.fireTableDataChanged();
     }
 
+    public void removeTable(int index){
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
+        tableModel.removeRow(index);
+        tableModel.fireTableDataChanged();
+    }
+    public int supprimer(){
+        return tableau.getSelectedRow();
+            }
     public void quitter() {
 
         mainWindow.setVisible(false);
@@ -171,21 +240,37 @@ System.out.println("Debug");
         Details.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Details.setSize(400, 600);
         JLabel Titre = new JLabel("Titre");
-        JLabel Auteur = new JLabel("Auteur");
-        JLabel Annee = new JLabel("Année");
-
-        JTextField setTitre = new JTextField();
-        JTextField setAuteur = new JTextField();
-        JTextField setAnnee = new JTextField();
+        JLabel Auteur = new JLabel("Nom Auteur");
+        JLabel AuteurPrenom=new JLabel("Prenom Auteur");
+        JLabel Presentation = new JLabel("Presentation");
+        JLabel Parution =new JLabel("Parution");
+       setTitre = new JTextField();
+       setNomAuteur = new JTextField();
+       setPrenomAuteur=new JTextField();
+       setPresentation = new JTextField();
+       setParution=new JTextField();
         Container containAjouter = new Container();
-        containAjouter.setLayout(new GridLayout(4, 2));
+        containAjouter.setLayout(new GridLayout(8, 2));
         containAjouter.add(Titre);
         containAjouter.add(setTitre);
         containAjouter.add(Auteur);
-        containAjouter.add(setAuteur);
+
+        containAjouter.add(setNomAuteur);
+        containAjouter.add(AuteurPrenom);
+        containAjouter.add(setPrenomAuteur);
+        containAjouter.add(Presentation);
+        containAjouter.add(setPresentation);
+        containAjouter.add(Parution);
+        containAjouter.add(setParution);
+
+        containAjouter.add(Confirmer);
+
+
 
         Details.getContentPane().add(containAjouter);
         Details.setVisible(true);
+
+
 
     }
 }
