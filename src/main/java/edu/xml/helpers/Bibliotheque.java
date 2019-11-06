@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.11.06 à 12:19:40 PM CET 
+// Généré le : 2019.11.06 à 01:47:40 PM CET 
 //
 
 
@@ -10,13 +10,11 @@ package edu.xml.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -53,9 +51,8 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;element name="img_url" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
  *                   &lt;element name="rangee" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
- *                   &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
- *                   &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *                   &lt;element name="acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -137,9 +134,8 @@ public class Bibliotheque {
      *         &lt;element name="img_url" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
      *         &lt;element name="rangee" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
-     *         &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
-     *         &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
      *         &lt;element name="acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -150,68 +146,218 @@ public class Bibliotheque {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "content"
+        "titre",
+        "auteur",
+        "presentation",
+        "parution",
+        "imgUrl",
+        "colonne",
+        "rangee",
+        "acquis",
+        "pret"
     })
     public static class Livre {
 
-        @XmlElementRefs({
-            @XmlElementRef(name = "colonne", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "pret", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "acquis", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "titre", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "auteur", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "presentation", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "parution", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "img_url", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "rangee", type = JAXBElement.class, required = false)
-        })
-        protected List<JAXBElement<?>> content;
+        @XmlElement(required = true)
+        protected String titre;
+        @XmlElement(required = true)
+        protected Bibliotheque.Livre.Auteur auteur;
+        @XmlElement(required = true)
+        protected String presentation;
+        @XmlSchemaType(name = "unsignedShort")
+        protected int parution;
+        @XmlElement(name = "img_url", required = true)
+        protected String imgUrl;
+        @XmlSchemaType(name = "unsignedByte")
+        protected short colonne;
+        @XmlSchemaType(name = "unsignedByte")
+        protected short rangee;
+        @XmlElement(required = true)
+        protected String acquis;
+        protected boolean pret;
 
         /**
-         * Obtient le reste du modèle de contenu. 
+         * Obtient la valeur de la propriété titre.
          * 
-         * <p>
-         * Vous obtenez la propriété "catch-all" pour la raison suivante : 
-         * Le nom de champ "Colonne" est utilisé par deux parties différentes d'un schéma. Reportez-vous à : 
-         * ligne 24 sur file:/home/mathys/Cours/Prog%20Avancée/ProjAgile/Biblio.xsd
-         * ligne 22 sur file:/home/mathys/Cours/Prog%20Avancée/ProjAgile/Biblio.xsd
-         * <p>
-         * Pour vous débarrasser de cette propriété, appliquez une personnalisation de propriété à l'une 
-         * des deux déclarations suivantes afin de modifier leurs noms : 
-         * Gets the value of the content property.
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getTitre() {
+            return titre;
+        }
+
+        /**
+         * Définit la valeur de la propriété titre.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the content property.
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setTitre(String value) {
+            this.titre = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété auteur.
          * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getContent().add(newItem);
-         * </pre>
+         * @return
+         *     possible object is
+         *     {@link Bibliotheque.Livre.Auteur }
+         *     
+         */
+        public Bibliotheque.Livre.Auteur getAuteur() {
+            return auteur;
+        }
+
+        /**
+         * Définit la valeur de la propriété auteur.
          * 
+         * @param value
+         *     allowed object is
+         *     {@link Bibliotheque.Livre.Auteur }
+         *     
+         */
+        public void setAuteur(Bibliotheque.Livre.Auteur value) {
+            this.auteur = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété presentation.
          * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link JAXBElement }{@code <}{@link Short }{@code >}
-         * {@link JAXBElement }{@code <}{@link Boolean }{@code >}
-         * {@link JAXBElement }{@code <}{@link String }{@code >}
-         * {@link JAXBElement }{@code <}{@link String }{@code >}
-         * {@link JAXBElement }{@code <}{@link Bibliotheque.Livre.Auteur }{@code >}
-         * {@link JAXBElement }{@code <}{@link String }{@code >}
-         * {@link JAXBElement }{@code <}{@link Integer }{@code >}
-         * {@link JAXBElement }{@code <}{@link String }{@code >}
-         * {@link JAXBElement }{@code <}{@link Short }{@code >}
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getPresentation() {
+            return presentation;
+        }
+
+        /**
+         * Définit la valeur de la propriété presentation.
          * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setPresentation(String value) {
+            this.presentation = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété parution.
          * 
          */
-        public List<JAXBElement<?>> getContent() {
-            if (content == null) {
-                content = new ArrayList<JAXBElement<?>>();
-            }
-            return this.content;
+        public int getParution() {
+            return parution;
+        }
+
+        /**
+         * Définit la valeur de la propriété parution.
+         * 
+         */
+        public void setParution(int value) {
+            this.parution = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété imgUrl.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getImgUrl() {
+            return imgUrl;
+        }
+
+        /**
+         * Définit la valeur de la propriété imgUrl.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setImgUrl(String value) {
+            this.imgUrl = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété colonne.
+         * 
+         */
+        public short getColonne() {
+            return colonne;
+        }
+
+        /**
+         * Définit la valeur de la propriété colonne.
+         * 
+         */
+        public void setColonne(short value) {
+            this.colonne = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété rangee.
+         * 
+         */
+        public short getRangee() {
+            return rangee;
+        }
+
+        /**
+         * Définit la valeur de la propriété rangee.
+         * 
+         */
+        public void setRangee(short value) {
+            this.rangee = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété acquis.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getAcquis() {
+            return acquis;
+        }
+
+        /**
+         * Définit la valeur de la propriété acquis.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setAcquis(String value) {
+            this.acquis = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété pret.
+         * 
+         */
+        public boolean isPret() {
+            return pret;
+        }
+
+        /**
+         * Définit la valeur de la propriété pret.
+         * 
+         */
+        public void setPret(boolean value) {
+            this.pret = value;
         }
 
 
