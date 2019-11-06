@@ -35,12 +35,17 @@
                             <artifactId>checkstyle-rules</artifactId>
                             <version>1.1.0</version>
                         </dependency>
-                        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
                         <dependency>
                             <groupId>javax.xml.bind</groupId>
                             <artifactId>jaxb-api</artifactId>
                             <version>2.4.0-b180830.0359</version>
                         </dependency>
+                        <dependency>
+                            <groupId>org.apache.poi</groupId>
+                            <artifactId>poi</artifactId>
+                            <version>4.1.1</version>
+                        </dependency>
+
                     </dependencies>
                     <configuration>
                         <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
