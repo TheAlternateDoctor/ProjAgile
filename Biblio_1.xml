@@ -33,4 +33,15 @@
         <colonne>0</colonne>
         <rangee>0</rangee>
     </livre>
+    <livre>
+        <titre>Test</titre>
+        <auteur>
+            <nom>Teeest</nom>
+            <prenom>TEST</prenom>
+        </auteur>
+        <presentation>Tessst</presentation>
+        <parution>2000</parution>
+        <colonne>0</colonne>
+        <rangee>0</rangee>
+    </livre>
 </bibliotheque>

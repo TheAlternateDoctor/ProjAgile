@@ -15,7 +15,7 @@ import edu.xml.helpers.Bibliotheque.Livre.Auteur;
 import edu.xml.helpers.ObjectFactory;
 
 public class Model {
-
+    
     private List<Livre> livres;
     private String filepath;
     private Bibliotheque bibliotheque;
@@ -84,6 +84,8 @@ public class Model {
             convertedLivres[i][1] = livre.getAuteur().getNom() + " " + livre.getAuteur().getPrenom()  ;
             convertedLivres[i][2] = livre.getPresentation();
             convertedLivres[i][3] = String.valueOf(livre.getParution());
+            convertedLivres[i][4] = String.valueOf(livre.getColonne());
+            convertedLivres[i][5] = String.valueOf(livre.getRangee());
         }
         return convertedLivres;
     }
