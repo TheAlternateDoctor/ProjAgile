@@ -112,8 +112,8 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(livre.get(5));
-        newLivre.setRangee((livre.get(6)));
+        newLivre.setColonne(Short.parseShort(livre.get(5)));
+        newLivre.setRangee(Short.parseShort((livre.get(6))));
         livres.add(newLivre);
     }
 
@@ -126,8 +126,8 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(livre.get(5));
-        newLivre.setRangee((livre.get(6)));
+        newLivre.setColonne(Short.parseShort(livre.get(5)));
+        newLivre.setRangee(Short.parseShort(livre.get(6)));
         livres.set(index, newLivre);
     }
 
