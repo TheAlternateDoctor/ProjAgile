@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
-// Généré le : 2019.10.17 à 01:42:28 PM CEST
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+// Généré le : 2019.11.06 à 12:19:40 PM CET 
 //
 
 
@@ -10,19 +10,21 @@ package edu.xml.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Classe Java pour anonymous complex type.
- *
+ * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- *
+ * 
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -48,8 +50,12 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;/element>
  *                   &lt;element name="presentation" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="parution" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/>
+ *                   &lt;element name="img_url" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
  *                   &lt;element name="rangee" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
+ *                   &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
+ *                   &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *                   &lt;element name="acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -60,8 +66,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -75,25 +81,25 @@ public class Bibliotheque {
 
     /**
      * Gets the value of the livre property.
-     *
+     * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the livre property.
-     *
+     * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getLivre().add(newItem);
      * </pre>
-     *
-     *
+     * 
+     * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Bibliotheque.Livre }
-     *
-     *
+     * 
+     * 
      */
     public List<Bibliotheque.Livre> getLivre() {
         if (livre == null) {
@@ -105,9 +111,9 @@ public class Bibliotheque {
 
     /**
      * <p>Classe Java pour anonymous complex type.
-     *
+     * 
      * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -128,168 +134,92 @@ public class Bibliotheque {
      *         &lt;/element>
      *         &lt;element name="presentation" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="parution" type="{http://www.w3.org/2001/XMLSchema}unsignedShort"/>
+     *         &lt;element name="img_url" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
      *         &lt;element name="rangee" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
+     *         &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
+     *         &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+     *         &lt;element name="acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     *
-     *
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "titre",
-        "auteur",
-        "presentation",
-        "parution",
-        "colonne",
-        "rangee"
+        "content"
     })
     public static class Livre {
 
-        @XmlElement(required = true)
-        protected String titre;
-        @XmlElement(required = true)
-        protected Bibliotheque.Livre.Auteur auteur;
-        @XmlElement(required = true)
-        protected String presentation;
-        @XmlSchemaType(name = "unsignedShort")
-        protected int parution;
-        @XmlSchemaType(name = "unsignedByte")
-        protected String colonne;
-        @XmlSchemaType(name = "unsignedByte")
-        protected String rangee;
+        @XmlElementRefs({
+            @XmlElementRef(name = "colonne", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "pret", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "acquis", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "titre", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "auteur", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "presentation", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "parution", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "img_url", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "rangee", type = JAXBElement.class, required = false)
+        })
+        protected List<JAXBElement<?>> content;
 
         /**
-         * Obtient la valeur de la propriété titre.
-         *
-         * @return
-         *     possible object is
-         *     {@link String }
-         *
+         * Obtient le reste du modèle de contenu. 
+         * 
+         * <p>
+         * Vous obtenez la propriété "catch-all" pour la raison suivante : 
+         * Le nom de champ "Colonne" est utilisé par deux parties différentes d'un schéma. Reportez-vous à : 
+         * ligne 24 sur file:/home/mathys/Cours/Prog%20Avancée/ProjAgile/Biblio.xsd
+         * ligne 22 sur file:/home/mathys/Cours/Prog%20Avancée/ProjAgile/Biblio.xsd
+         * <p>
+         * Pour vous débarrasser de cette propriété, appliquez une personnalisation de propriété à l'une 
+         * des deux déclarations suivantes afin de modifier leurs noms : 
+         * Gets the value of the content property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the content property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getContent().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link JAXBElement }{@code <}{@link Short }{@code >}
+         * {@link JAXBElement }{@code <}{@link Boolean }{@code >}
+         * {@link JAXBElement }{@code <}{@link String }{@code >}
+         * {@link JAXBElement }{@code <}{@link String }{@code >}
+         * {@link JAXBElement }{@code <}{@link Bibliotheque.Livre.Auteur }{@code >}
+         * {@link JAXBElement }{@code <}{@link String }{@code >}
+         * {@link JAXBElement }{@code <}{@link Integer }{@code >}
+         * {@link JAXBElement }{@code <}{@link String }{@code >}
+         * {@link JAXBElement }{@code <}{@link Short }{@code >}
+         * 
+         * 
          */
-        public String getTitre() {
-            return titre;
-        }
-
-        /**
-         * Définit la valeur de la propriété titre.
-         *
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *
-         */
-        public void setTitre(String value) {
-            this.titre = value;
-        }
-
-        /**
-         * Obtient la valeur de la propriété auteur.
-         *
-         * @return
-         *     possible object is
-         *     {@link Bibliotheque.Livre.Auteur }
-         *
-         */
-        public Bibliotheque.Livre.Auteur getAuteur() {
-            return auteur;
-        }
-
-        /**
-         * Définit la valeur de la propriété auteur.
-         *
-         * @param value
-         *     allowed object is
-         *     {@link Bibliotheque.Livre.Auteur }
-         *
-         */
-        public void setAuteur(Bibliotheque.Livre.Auteur value) {
-            this.auteur = value;
-        }
-
-        /**
-         * Obtient la valeur de la propriété presentation.
-         *
-         * @return
-         *     possible object is
-         *     {@link String }
-         *
-         */
-        public String getPresentation() {
-            return presentation;
-        }
-
-        /**
-         * Définit la valeur de la propriété presentation.
-         *
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *
-         */
-        public void setPresentation(String value) {
-            this.presentation = value;
-        }
-
-        /**
-         * Obtient la valeur de la propriété parution.
-         *
-         */
-        public int getParution() {
-            return parution;
-        }
-
-        /**
-         * Définit la valeur de la propriété parution.
-         *
-         */
-        public void setParution(int value) {
-            this.parution = value;
-        }
-
-        /**
-         * Obtient la valeur de la propriété colonne.
-         *
-         */
-        public String getColonne() {
-            return colonne;
-        }
-
-        /**
-         * Définit la valeur de la propriété colonne.
-         *
-         * @param value
-         */
-        public void setColonne(String value) {
-            this.colonne = value;
-        }
-
-        /**
-         * Obtient la valeur de la propriété rangee.
-         *
-         */
-        public String getRangee() {
-            return rangee;
-        }
-
-        /**
-         * Définit la valeur de la propriété rangee.
-         *
-         * @param value
-         */
-        public void setRangee(String value) {
-            this.rangee = value;
+        public List<JAXBElement<?>> getContent() {
+            if (content == null) {
+                content = new ArrayList<JAXBElement<?>>();
+            }
+            return this.content;
         }
 
 
         /**
          * <p>Classe Java pour anonymous complex type.
-         *
+         * 
          * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
-         *
+         * 
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
@@ -302,8 +232,8 @@ public class Bibliotheque {
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
-         *
-         *
+         * 
+         * 
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
@@ -319,11 +249,11 @@ public class Bibliotheque {
 
             /**
              * Obtient la valeur de la propriété nom.
-             *
+             * 
              * @return
              *     possible object is
              *     {@link String }
-             *
+             *     
              */
             public String getNom() {
                 return nom;
@@ -331,11 +261,11 @@ public class Bibliotheque {
 
             /**
              * Définit la valeur de la propriété nom.
-             *
+             * 
              * @param value
              *     allowed object is
              *     {@link String }
-             *
+             *     
              */
             public void setNom(String value) {
                 this.nom = value;
@@ -343,11 +273,11 @@ public class Bibliotheque {
 
             /**
              * Obtient la valeur de la propriété prenom.
-             *
+             * 
              * @return
              *     possible object is
              *     {@link String }
-             *
+             *     
              */
             public String getPrenom() {
                 return prenom;
@@ -355,11 +285,11 @@ public class Bibliotheque {
 
             /**
              * Définit la valeur de la propriété prenom.
-             *
+             * 
              * @param value
              *     allowed object is
              *     {@link String }
-             *
+             *     
              */
             public void setPrenom(String value) {
                 this.prenom = value;
