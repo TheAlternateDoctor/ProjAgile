@@ -35,8 +35,7 @@ public class Model {
     private Bibliotheque bibliotheque;
 
     public Model() {
-        readFile("./Biblio_1.xml");
-        getLivres();
+        new ModelWord(bibliotheque, "test.txt");
     }
 
     public void readFile(String filepath) {
