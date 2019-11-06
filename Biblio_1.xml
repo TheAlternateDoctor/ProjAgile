@@ -33,4 +33,26 @@
         <colonne>0</colonne>
         <rangee>0</rangee>
     </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>1244</parution>
+        <colonne>0</colonne>
+        <rangee>0</rangee>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>1920</parution>
+        <colonne>10</colonne>
+        <rangee>12</rangee>
+    </livre>
 </bibliotheque>

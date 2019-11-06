@@ -10,7 +10,7 @@ import java.lang.reflect.Array;
 public class View extends JFrame { // Mainwindow
     // Attribut
     private JFrame mainWindow;
-
+    private Container tableContainer;
     private Container container;
     // Menu principale //
     private JMenu Fichier;
@@ -25,18 +25,18 @@ public class View extends JFrame { // Mainwindow
     private JMenuItem Newfile;
     private JMenuItem Openfile;
     private JTable tableau;
-    JTextField setTitre;
-    JTextField setNomAuteur;
-    JTextField setPrenomAuteur;
-    JTextField setPresentation;
-    JTextField setParution;
+    private JTextField setTitre;
+    private JTextField setNomAuteur;
+    private JTextField setPrenomAuteur;
+    private JTextField setPresentation;
+    private JTextField setParution;
+    private JTextField setRangee;
+    private JTextField setcol;
 
     // Affichage fichier xml //
     private JTable table;
 
-    enum Sport {
-        FOOTBALL, NATATION, RIEN, TENNIS;
-    }
+
 
     private JFrame Details;
     private JButton adds;
@@ -150,6 +150,14 @@ public class View extends JFrame { // Mainwindow
         return fc.getSelectedFile().getAbsolutePath();
     }
 
+    public JTextField getSetRangee() {
+        return setRangee;
+    }
+
+    public JTextField getSetcol() {
+        return setcol;
+    }
+
     public JTextField getSetTitre() {
         return setTitre;
     }
@@ -180,24 +188,26 @@ public class View extends JFrame { // Mainwindow
 
     public void newfile() {
         // Tableau XML
-        final String[] entetes = { "Titre", "Auteur", "presentation", "parution" };
-
-        Object[][] donnees = { { "", "", "", "" }, { "", "", "", "" }, { "", "", "", "" }, { "", "", "", "" }, };
-
+        final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne" };
+        Object[][] donnees = { { "", "", "", "","","" }, { "", "", "", "","","" }, { "", "", "", "","","" }, { "", "", "", "","","" }};
         JTable tableau = new JTable(donnees, entetes);
-
+        Container tableContainer=new Container();
         System.out.println("Debug");
-        container.add(tableau.getTableHeader());
-        container.add(tableau);
-        mainWindow.getContentPane().add(container, BorderLayout.CENTER);
+        Container ContainerNewTable=new Container();
+       ContainerNewTable.setLayout(new GridLayout(2,4));
+
+       ContainerNewTable.add(tableau.getTableHeader());
+        JScrollPane pane2=new JScrollPane(tableau);
+       container.add(ContainerNewTable);
+       container.add(pane2);
+       mainWindow.getContentPane().add(container);
         SwingUtilities.updateComponentTreeUI(mainWindow);
 System.out.println("Debug");
     }
 
     public void table(String[][] donnees) {
         // Tableau XML
-        final String[] entetes = { "Titre", "Auteur", "presentation", "parution" };
-
+        final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne" };
         tableau = new JTable();
        DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
        tableModel.setColumnIdentifiers(entetes);
@@ -244,11 +254,15 @@ System.out.println("Debug");
         JLabel AuteurPrenom=new JLabel("Prenom Auteur");
         JLabel Presentation = new JLabel("Presentation");
         JLabel Parution =new JLabel("Parution");
+        JLabel rangeeLabel=new JLabel("rangée");
+        JLabel colLabel=new JLabel("colonne");
        setTitre = new JTextField();
        setNomAuteur = new JTextField();
        setPrenomAuteur=new JTextField();
        setPresentation = new JTextField();
        setParution=new JTextField();
+       setRangee=new JTextField();
+       setcol=new JTextField();
         Container containAjouter = new Container();
         containAjouter.setLayout(new GridLayout(8, 2));
         containAjouter.add(Titre);
@@ -262,7 +276,10 @@ System.out.println("Debug");
         containAjouter.add(setPresentation);
         containAjouter.add(Parution);
         containAjouter.add(setParution);
-
+        containAjouter.add(rangeeLabel);
+        containAjouter.add(setRangee);
+        containAjouter.add(colLabel);
+        containAjouter.add(setcol);
         containAjouter.add(Confirmer);
 
 

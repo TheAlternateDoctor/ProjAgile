@@ -55,9 +55,11 @@ public class Controller {
                Addlivres.add(view.getSetPrenomAuteur().getText());
                Addlivres.add(view.getSetPresentation().getText());
                Addlivres.add(view.getSetParution().getText());
+               Addlivres.add(view.getSetRangee().getText());
+               Addlivres.add(view.getSetcol().getText());
                model.addLivre(Addlivres);
                model.saveFile();
-               String[] donnees = {view.getSetTitre().getText(),view.getSetNomAuteur().getText()+" "+view.getSetPrenomAuteur().getText(),view.getSetPresentation().getText(),view.getSetParution().getText()};
+               String[] donnees = {view.getSetTitre().getText(),view.getSetNomAuteur().getText()+" "+view.getSetPrenomAuteur().getText(),view.getSetPresentation().getText(),view.getSetParution().getText(),view.getSetRangee().getText(),view.getSetcol().getText()};
                view.addTable(donnees);
 
                                            }
