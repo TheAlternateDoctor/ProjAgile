@@ -37,6 +37,12 @@ public class Controller {
                 model.saveFile(view.Openfile());
             }
         });
+        view.getExport().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.exportTo(view.OpenfileDocx());
+            }
+        });
         view.getEnd().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

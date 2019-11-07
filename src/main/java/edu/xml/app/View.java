@@ -24,12 +24,12 @@ public class View extends JFrame { // Mainwindow
     private Container leftContainer;
     // Menu principale //
     private JMenu Fichier;
-    private JMenu Export;
     private JMenu Menusave;
     private JMenu About;
     private JMenuItem shortdesc;
     private  JButton Confirmer;
     private JMenuBar Bar;
+    private JMenuItem Export;
     private JMenuItem save;
     private JMenuItem saveas;
     private JMenuItem End;
@@ -105,7 +105,7 @@ public class View extends JFrame { // Mainwindow
         Bar = new JMenuBar();
         // Premier sous menu
         Fichier = new JMenu("Fichier");
-        Export=new JMenu("Export");
+        Export=new JMenuItem("Export en docx");
         Openfile = new JMenuItem("Ouvrir");
         Newfile = new JMenuItem("Nouveau");
 
@@ -269,6 +269,10 @@ public class View extends JFrame { // Mainwindow
         return saveas;
     }
 
+    public JMenuItem getExport() {
+        return Export;
+    }
+
     public JMenuItem getNewfile() {
         return Newfile;
     }
@@ -283,6 +287,23 @@ public class View extends JFrame { // Mainwindow
         final JFileChooser fc = new JFileChooser();
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Fichier XML", "xml");
+        fc.setFileFilter(filter);
+        int returnVal = fc.showOpenDialog(getParent());
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("You chose to open this file: " + fc.getSelectedFile().getName());
+        }
+
+        containerOpen.add(fc);
+
+        return fc.getSelectedFile().getAbsolutePath();
+    }
+    public String OpenfileDocx() {
+        containerOpen = new Container();
+        containerOpen.setLayout(new GridLayout(1, 1));
+        final JFileChooser fc = new JFileChooser();
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Fichier DOCX", "docx");
         fc.setFileFilter(filter);
         int returnVal = fc.showOpenDialog(getParent());
 
