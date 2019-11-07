@@ -82,8 +82,7 @@ public class Controller {
         view.getApply().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i=0;
-                model.modifyLivre(i,view.modifyView());
+                model.modifyLivre(view.getTableau().getSelectedRow(),view.modifyView());
 
             }
         });

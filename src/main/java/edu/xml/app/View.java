@@ -485,7 +485,7 @@ System.out.println("Debug");
 
     }
     public List<String> modifyView(){
-        String modify=new String();
+        String modify;
         modify= slivre.getText() + "," + sauteurnom.getText() +"," + spresentation.getText() +","+ sparution.getText();
         modify += "," + srangee.getText() + "," + scolonne.getText() + "," +sUrl.getText();
         List<String> myList = new ArrayList<String>(Arrays.asList(modify.split(",")));
