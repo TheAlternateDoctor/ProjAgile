@@ -15,7 +15,7 @@ import edu.xml.helpers.Bibliotheque.Livre.Auteur;
 import edu.xml.helpers.ObjectFactory;
 
 public class Model {
-    
+
 /*
     Index:
     Titre

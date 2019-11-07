@@ -2,9 +2,15 @@ package edu.xml.app;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.lang.reflect.Array;
 
 public class View extends JFrame { // Mainwindow
@@ -24,7 +30,7 @@ public class View extends JFrame { // Mainwindow
     private JMenuItem End;
     private JMenuItem Newfile;
     private JMenuItem Openfile;
-    private JTable tableau;
+    private JTable tableau=new JTable();
     private JTextField setTitre;
     private JTextField setNomAuteur;
     private JTextField setPrenomAuteur;
@@ -32,9 +38,29 @@ public class View extends JFrame { // Mainwindow
     private JTextField setParution;
     private JTextField setRangee;
     private JTextField setcol;
+    private JComboBox typeEmprunt;
+    private JTextField setUrlImg;
+
+    // Gestion images
+    private ImageIcon icone;
+    private JLabel image;
+    private JPanel panIMG;
+    public static long count = 0;
+
+    public JTextField getSetUrlImg() {
+        return setUrlImg;
+    }
+
+    public JComboBox getTypeEmprunt() {
+        return typeEmprunt;
+    }
+
+    public JTable getTableau() {
+        return tableau;
+    }
 
     // Affichage fichier xml //
-    private JTable table;
+
 
 
 
@@ -49,14 +75,13 @@ public class View extends JFrame { // Mainwindow
     // méthode
 
     public View() throws HeadlessException {
-        // Création de la fenêtre vide
+
 
         mainWindow = new JFrame("Agile");
+       mainWindow.setSize(800,800);
 
-        mainWindow.setSize(800, 400);
         container = new Container();
-        container.setLayout(new BorderLayout(6, 3));
-        container.setSize(580,250);
+        container.setLayout(new BorderLayout(9, 9));
         // Menu principale
         Bar = new JMenuBar();
         // Premier sous menu
@@ -87,17 +112,21 @@ public class View extends JFrame { // Mainwindow
         container.add(Bar);
         // Menu haut
         // Bouttons ajouter/supprimer
-        adds = new JButton("+");
-        delete = new JButton("-");
-        adds.setPreferredSize(new Dimension(40, 40));
-        delete.setPreferredSize(new Dimension(40, 40));
-        mainWindow.getContentPane().add(container, BorderLayout.NORTH);
+        adds = new JButton("<html><span style='color:green;border:1px solid black'>+</span></html>");
+        delete = new JButton("<html><span style='color:red '>-</span></html>");
+        adds.setPreferredSize(new Dimension(5, 5));
 
-        Container containerButton = new Container();
-        containerButton.setLayout(new GridLayout(1, 2));
+        delete.setPreferredSize(new Dimension(5, 5));
+        mainWindow.getContentPane().add(container, BorderLayout.NORTH);
+        JPanel containerButton = new JPanel();
+        GridLayout g2=new GridLayout(1, 2);
+        g2.setHgap(10);
+        g2.setVgap(5);
+        containerButton.setLayout(g2);
         containerButton.add(adds);
         containerButton.add(delete);
-        mainWindow.getContentPane().add(containerButton, BorderLayout.SOUTH);
+        containerButton.setPreferredSize(new Dimension(10,50));
+        mainWindow.getContentPane().add(containerButton,BorderLayout.SOUTH);
          Confirmer=new JButton("Confirmer");
         // Print
         this.mainWindow.setVisible(true);
@@ -150,13 +179,9 @@ public class View extends JFrame { // Mainwindow
         return fc.getSelectedFile().getAbsolutePath();
     }
 
-    public JTextField getSetRangee() {
-        return setRangee;
-    }
+    public JTextField getSetRangee() { return setRangee;  }
 
-    public JTextField getSetcol() {
-        return setcol;
-    }
+    public JTextField getSetcol() {  return setcol; }
 
     public JTextField getSetTitre() {
         return setTitre;
@@ -190,12 +215,11 @@ public class View extends JFrame { // Mainwindow
         // Tableau XML
         final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne" };
         Object[][] donnees = { { "", "", "", "","","" }, { "", "", "", "","","" }, { "", "", "", "","","" }, { "", "", "", "","","" }};
-        JTable tableau = new JTable(donnees, entetes);
-        Container tableContainer=new Container();
-        System.out.println("Debug");
-        Container ContainerNewTable=new Container();
+       tableau = new JTable(donnees, entetes);
+       Container tableContainer=new Container();
+       System.out.println("Debug");
+       Container ContainerNewTable=new Container();
        ContainerNewTable.setLayout(new GridLayout(2,4));
-
        ContainerNewTable.add(tableau.getTableHeader());
         JScrollPane pane2=new JScrollPane(tableau);
        container.add(ContainerNewTable);
@@ -207,8 +231,8 @@ System.out.println("Debug");
 
     public void table(String[][] donnees) {
         // Tableau XML
-        final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne" };
-        tableau = new JTable();
+        final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne","UrlIMG","Prêt" };
+
        DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
        tableModel.setColumnIdentifiers(entetes);
        for(int i = 0;i<donnees.length;i++){
@@ -220,6 +244,9 @@ System.out.println("Debug");
         container.add(pane);
         mainWindow.getContentPane().add(container,BorderLayout.NORTH);
         SwingUtilities.updateComponentTreeUI(mainWindow);
+
+
+
     }
     public void addTable(String[] donnees){
 
@@ -246,9 +273,9 @@ System.out.println("Debug");
 
     public void Ajouter() {
         Details = new JFrame("Ajouter");
-
         Details.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Details.setSize(400, 600);
+        JLabel imgLabel=new JLabel("adresse de l'image");
         JLabel Titre = new JLabel("Titre");
         JLabel Auteur = new JLabel("Nom Auteur");
         JLabel AuteurPrenom=new JLabel("Prenom Auteur");
@@ -256,6 +283,7 @@ System.out.println("Debug");
         JLabel Parution =new JLabel("Parution");
         JLabel rangeeLabel=new JLabel("rangée");
         JLabel colLabel=new JLabel("colonne");
+        JLabel typeLabel=new JLabel("Type");
        setTitre = new JTextField();
        setNomAuteur = new JTextField();
        setPrenomAuteur=new JTextField();
@@ -263,12 +291,17 @@ System.out.println("Debug");
        setParution=new JTextField();
        setRangee=new JTextField();
        setcol=new JTextField();
+
+        Object[] elements = new Object[]{"Prêt", "Acquis", "prêter"};
+        typeEmprunt= new JComboBox(elements);
         Container containAjouter = new Container();
-        containAjouter.setLayout(new GridLayout(8, 2));
+        containAjouter.setLayout(new BorderLayout());
+        containAjouter.setLayout(new GridLayout(11, 2));
+        containAjouter.add(typeLabel);
+        containAjouter.add(typeEmprunt);
         containAjouter.add(Titre);
         containAjouter.add(setTitre);
         containAjouter.add(Auteur);
-
         containAjouter.add(setNomAuteur);
         containAjouter.add(AuteurPrenom);
         containAjouter.add(setPrenomAuteur);
@@ -280,14 +313,56 @@ System.out.println("Debug");
         containAjouter.add(setRangee);
         containAjouter.add(colLabel);
         containAjouter.add(setcol);
-        containAjouter.add(Confirmer);
+        containAjouter.add(imgLabel);
+        final JFileChooser fc1 = new JFileChooser();
 
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("images", "jpg");
+        fc1.setFileFilter(filter);
+        int returnVal = fc1.showOpenDialog(getParent());
 
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("You chose to open this file: " + fc1.getSelectedFile().getName());
+        }
 
+        containAjouter.add(fc1);
+        containAjouter.add(Confirmer,BorderLayout.WEST);
         Details.getContentPane().add(containAjouter);
         Details.setVisible(true);
-
-
-
     }
+    public void  addIMG(String path){
+    if(count>0){
+    panIMG.removeAll();
+    ImageIcon icone2=new ImageIcon(path);
+    JLabel image2=new JLabel(icone2);
+    panIMG.add(image2);
+
+}  else {
+    icone = new ImageIcon(path);
+    image = new JLabel(icone);
+    panIMG = new JPanel();
+    panIMG.add(image);
+}
+
+
+
+
+        mainWindow.getContentPane().add(panIMG,BorderLayout.SOUTH);
+        SwingUtilities.updateComponentTreeUI(mainWindow);
+        count++;
+    }
+    public void updateIMG() {
+    tableau.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            int row = tableau.getSelectedRow();
+            String imgPath=new String();
+            imgPath=(String) tableau.getValueAt(row,6);
+            System.out.println(imgPath);
+            addIMG(imgPath);
+
+        }
+
+    });
+}
+
+
 }
