@@ -202,7 +202,7 @@
             <nom>image</nom>
             <prenom>afficher</prenom>
         </auteur>
-        <presentation>test&amp;</presentation>
+        <presentation>test;</presentation>
         <parution>1954</parution>
         <colonne>6</colonne>
         <rangee>11</rangee>
@@ -215,7 +215,7 @@
             <nom>image</nom>
             <prenom>afficher</prenom>
         </auteur>
-        <presentation>test&amp;</presentation>
+        <presentation>test</presentation>
         <parution>1954</parution>
         <colonne>6</colonne>
         <rangee>11</rangee>

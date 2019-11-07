@@ -32,6 +32,7 @@ public class Model {
 
     private List<Livre> livres;
     private String filepath;
+    private String filename;
     private Bibliotheque bibliotheque;
 
     public Model() {
@@ -39,10 +40,17 @@ public class Model {
         new ModelWord(bibliotheque, "test.txt");
     }
 
+    public void exportTo(String filepath){
+        ModelWord model = new ModelWord(bibliotheque,filename);
+        model.buildModel();
+        model.exportModel(filepath);
+    }
+
     public void readFile(String filepath) {
         try {
             this.filepath = filepath;
             File file = new File(filepath);
+            filename = file.getName();
             if (file.exists() && filepath != "") {
                 JAXBContext jc = JAXBContext.newInstance("edu.xml.helpers");
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
