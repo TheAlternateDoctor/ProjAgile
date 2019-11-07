@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <bibliotheque>
     <livre>
-        <titre>XSD pour les nuls</titre>
+        <titre>XSDs</titre>
         <auteur>
-            <nom>Dupond</nom>
-            <prenom>Jean</prenom>
+            <nom>Dupond Jean  </nom>
+            <prenom> </prenom>
         </auteur>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
         <parution>2000</parution>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\gray.jpg</img_url>
         <colonne>5</colonne>
         <rangee>2</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\gray.jpg</img_url>
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>HarryPotter</titre>
@@ -21,10 +22,12 @@
         </auteur>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
         <parution>1996</parution>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\demon.jpg</img_url>
         <colonne>5</colonne>
         <rangee>2</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\demon.jpg</img_url>
+        <acquis>Preter</acquis>
+        <pret>false</pret>
+
     </livre>
     <livre>
         <titre>test</titre>
@@ -34,10 +37,11 @@
         </auteur>
         <presentation>test</presentation>
         <parution>1996</parution>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\téléchargement.jpg</img_url>
         <colonne>0</colonne>
         <rangee>0</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\téléchargement.jpg</img_url>
+        <acquis>Preter</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>Test</titre>
@@ -47,10 +51,11 @@
         </auteur>
         <presentation>Tesst</presentation>
         <parution>2000</parution>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\image4.jpg</img_url>
         <colonne>0</colonne>
         <rangee>0</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\image4.jpg</img_url>
+        <acquis>Preter</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -60,11 +65,11 @@
         </auteur>
         <presentation>test</presentation>
         <parution>1990</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter1.jpg</img_url>
         <colonne>10</colonne>
         <rangee>10</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter1.jpg</img_url>
-
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -74,11 +79,11 @@
         </auteur>
         <presentation>test</presentation>
         <parution>1875</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter2.jpg</img_url>
         <colonne>1</colonne>
         <rangee>1</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter2.jpg</img_url>
-
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -88,10 +93,11 @@
         </auteur>
         <presentation>test</presentation>
         <parution>3844</parution>
-        <colonne>15</colonne>
-        <rangee>14</rangee>
-        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <colonne>15</colonne>
+        <rangee>14</rangee>
+        <acquis>Preter</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -103,7 +109,8 @@
         <parution>3844</parution>
         <colonne>15</colonne>
         <rangee>14</rangee>
-        <acquis>1</acquis>
+        <acquis>Posseder</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>Harry Potter</titre>
@@ -115,7 +122,8 @@
         <parution>1996</parution>
         <colonne>20</colonne>
         <rangee>20</rangee>
-        <acquis>2</acquis>
+        <acquis>Posseder</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -125,10 +133,11 @@
         </auteur>
         <presentation>test</presentation>
         <parution>2019</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>20</colonne>
         <rangee>19</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -138,10 +147,11 @@
         </auteur>
         <presentation>test2</presentation>
         <parution>1924</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>39</colonne>
         <rangee>45</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Posseder</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>TEST4</titre>
@@ -151,10 +161,11 @@
         </auteur>
         <presentation>TST4</presentation>
         <parution>4046</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>46</colonne>
         <rangee>23</rangee>
-        <acquis>2</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Preter</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>TEST9</titre>
@@ -164,10 +175,11 @@
         </auteur>
         <presentation>TEST9</presentation>
         <parution>90</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>45</colonne>
         <rangee>90</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Poseder</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>TEST4</titre>
@@ -177,10 +189,11 @@
         </auteur>
         <presentation>TEST</presentation>
         <parution>45</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>90</colonne>
         <rangee>23</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>bla</titre>
@@ -190,11 +203,11 @@
         </auteur>
         <presentation>bla</presentation>
         <parution>30</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>130</colonne>
         <rangee>197</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
-
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>path</titre>
@@ -204,10 +217,11 @@
         </auteur>
         <presentation>test;</presentation>
         <parution>1954</parution>
+        <img_url></img_url>
         <colonne>6</colonne>
         <rangee>11</rangee>
-        <acquis>1</acquis>
-        <img_url></img_url>
+        <acquis>Posseder</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>path</titre>
@@ -219,7 +233,8 @@
         <parution>1954</parution>
         <colonne>6</colonne>
         <rangee>11</rangee>
-        <acquis>1</acquis>
+        <acquis>Emprunter</acquis>
+        <pret>true</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -229,10 +244,11 @@
         </auteur>
         <presentation>presentation</presentation>
         <parution>1355</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>19</colonne>
         <rangee>23</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Posseder</acquis>
+        <pret>false</pret>
     </livre>
     <livre>
         <titre>test</titre>
@@ -242,10 +258,10 @@
         </auteur>
         <presentation>test</presentation>
         <parution>1955</parution>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\windows.jpg</img_url>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
         <colonne>13</colonne>
         <rangee>12</rangee>
-        <acquis>1</acquis>
-        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+        <acquis>Posseder</acquis>
+        <pret>false</pret>
     </livre>
 </bibliotheque>

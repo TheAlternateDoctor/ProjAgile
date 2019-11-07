@@ -149,7 +149,7 @@ public class Model {
     }
 
     public void modifyLivre(int index, List<String> livre) {
-
+        System.out.println(livre);
         Livre newLivre = new Livre();
         Auteur newAuteur = new Auteur();
         newLivre.setTitre(livre.get(0));
@@ -165,10 +165,11 @@ public class Model {
         newLivre.setColonne(Short.parseShort(livre.get(4)));
         newLivre.setRangee(Short.parseShort(livre.get(5)));
         newLivre.setImgUrl(livre.get(6));
+        newLivre.setAcquis(livre.get(7));
 
-        newLivre.setAcquis(" ");
 
         livres.set(index, newLivre);
+        System.out.println(newLivre.getTitre());
     }
 
     public void removeLivre(int index) {
