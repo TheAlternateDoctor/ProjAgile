@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.11.06 à 01:47:40 PM CET 
+// Généré le : 2019.11.07 à 04:22:54 PM CET 
 //
 
 
@@ -52,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
  *                   &lt;element name="rangee" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
  *                   &lt;element name="acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="nom_acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
@@ -135,6 +136,7 @@ public class Bibliotheque {
      *         &lt;element name="colonne" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
      *         &lt;element name="rangee" type="{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
      *         &lt;element name="acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="nom_acquis" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="pret" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
@@ -154,6 +156,7 @@ public class Bibliotheque {
         "colonne",
         "rangee",
         "acquis",
+        "nomAcquis",
         "pret"
     })
     public static class Livre {
@@ -174,6 +177,8 @@ public class Bibliotheque {
         protected short rangee;
         @XmlElement(required = true)
         protected String acquis;
+        @XmlElement(name = "nom_acquis", required = true)
+        protected String nomAcquis;
         protected boolean pret;
 
         /**
@@ -342,6 +347,30 @@ public class Bibliotheque {
          */
         public void setAcquis(String value) {
             this.acquis = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété nomAcquis.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getNomAcquis() {
+            return nomAcquis;
+        }
+
+        /**
+         * Définit la valeur de la propriété nomAcquis.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setNomAcquis(String value) {
+            this.nomAcquis = value;
         }
 
         /**

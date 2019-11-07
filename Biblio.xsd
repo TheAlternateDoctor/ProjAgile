@@ -22,6 +22,7 @@
               <xs:element name="colonne" type="xs:unsignedByte" />
               <xs:element name="rangee" type="xs:unsignedByte" />
               <xs:element name="acquis" type="xs:string" />
+              <xs:element name="nom_acquis" type="xs:string" />
               <xs:element name="pret" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>

@@ -27,6 +27,7 @@ public class Model {
     Rangee
     Pret
     Acquis
+    Nom Acquis
     Img_Url
 */
 
@@ -108,8 +109,9 @@ public class Model {
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
-            convertedLivres[i][6] = livre.getImgUrl();
-            convertedLivres[i][7] = livre.getAcquis();
+            convertedLivres[i][6] = livre.getAcquis();
+            convertedLivres[i][7] = livre.getNomAcquis();
+            convertedLivres[i][8] = livre.getImgUrl();
 
         }
         return convertedLivres;
@@ -127,6 +129,7 @@ public class Model {
         convertedLivre.add(String.valueOf(livre.getRangee()));
         convertedLivre.add(String.valueOf(livre.isPret()));
         convertedLivre.add(livre.getAcquis());
+        convertedLivre.add(livre.getNomAcquis());
         convertedLivre.add(livre.getImgUrl());
         return convertedLivre;
     }
@@ -144,7 +147,8 @@ public class Model {
         newLivre.setRangee(Short.parseShort((livre.get(6))));
         newLivre.setPret(Boolean.parseBoolean(livre.get(7)));
         newLivre.setAcquis(livre.get(8));
-        newLivre.setImgUrl(livre.get(9));
+        newLivre.setNomAcquis(livre.get(9));
+        newLivre.setImgUrl(livre.get(8));
         livres.add(newLivre);
     }
 
@@ -165,6 +169,7 @@ public class Model {
         newLivre.setColonne(Short.parseShort(livre.get(4)));
         newLivre.setRangee(Short.parseShort(livre.get(5)));
         newLivre.setImgUrl(livre.get(6));
+        newLivre.setNomAcquis(livre.get(7));
 
         newLivre.setAcquis(" ");
 
