@@ -25,6 +25,18 @@ public class Controller {
                 view.table(model.getLivres());
             }
         });
+        view.getSave().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.saveFile();
+            }
+        });
+        view.getSaveAs().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.saveFile(view.Openfile());
+            }
+        });
         view.getEnd().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,7 +70,6 @@ public class Controller {
                Addlivres.add(view.getTypeEmprunt().getName());
                Addlivres.add(view.getSetUrlImg().getText());
                model.addLivre(Addlivres);
-               model.saveFile();
                String[] donnees = {view.getSetTitre().getText(),view.getSetNomAuteur().getText()+" "+view.getSetPrenomAuteur().getText(),view.getSetPresentation().getText(),view.getSetParution().getText(),view.getSetRangee().getText(),view.getSetcol().getText(),view.getTypeEmprunt().getName(),view.getSetUrlImg().getText()};
                view.addTable(donnees);
                view.addIMG(view.getSetUrlImg().getText());
@@ -71,7 +82,6 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 model.removeLivre(view.supprimer());
                 view.removeTable(view.supprimer());
-                model.saveFile();
             }
         });
         view.updateIMG();

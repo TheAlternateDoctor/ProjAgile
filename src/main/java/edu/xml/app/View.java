@@ -261,6 +261,14 @@ public class View extends JFrame { // Mainwindow
         return Openfile;
     }
 
+    public JMenuItem getSave() {
+        return save;
+    }
+
+    public JMenuItem getSaveAs() {
+        return saveas;
+    }
+
     public JMenuItem getNewfile() {
         return Newfile;
     }
