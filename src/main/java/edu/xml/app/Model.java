@@ -16,13 +16,27 @@ import edu.xml.helpers.ObjectFactory;
 
 public class Model {
 
+/*
+    Index:
+    Titre
+    Nom
+    Prenom
+    Présentation
+    Parution
+    Colonne
+    Rangee
+    Pret
+    Acquis
+    Img_Url
+*/
+
     private List<Livre> livres;
     private String filepath;
     private Bibliotheque bibliotheque;
 
     public Model() {
         readFile("./Biblio_1.xml");
-        getLivres();
+        new ModelWord(bibliotheque, "test.txt");
     }
 
     public void readFile(String filepath) {
@@ -77,7 +91,7 @@ public class Model {
     }
 
     public String[][] getLivres() {
-        String[][] convertedLivres = new String[livres.size()][7];
+        String[][] convertedLivres = new String[livres.size()][9];
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
             convertedLivres[i][0] = livre.getTitre();
@@ -86,8 +100,9 @@ public class Model {
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
-            convertedLivres[i][5]=livre.getAcquis();
-            convertedLivres[i][6]=livre.getImgUrl();
+            convertedLivres[i][6] = String.valueOf(livre.isPret());
+            convertedLivres[i][7] = livre.getAcquis();
+            convertedLivres[i][8] = livre.getImgUrl();
         }
         return convertedLivres;
     }
@@ -102,6 +117,9 @@ public class Model {
         convertedLivre.add(String.valueOf(livre.getParution()));
         convertedLivre.add(String.valueOf(livre.getColonne()));
         convertedLivre.add(String.valueOf(livre.getRangee()));
+        convertedLivre.add(String.valueOf(livre.isPret()));
+        convertedLivre.add(livre.getAcquis());
+        convertedLivre.add(livre.getImgUrl());
         return convertedLivre;
     }
 
@@ -116,8 +134,9 @@ public class Model {
         newLivre.setParution(Integer.parseInt(livre.get(4)));
         newLivre.setColonne(Short.parseShort(livre.get(5)));
         newLivre.setRangee(Short.parseShort((livre.get(6))));
-        newLivre.setAcquis(livre.get(7));
-        newLivre.setImgUrl(livre.get(8));
+        newLivre.setPret(Boolean.parseBoolean(livre.get(7)));
+        newLivre.setAcquis(livre.get(8));
+        newLivre.setImgUrl(livre.get(9));
         livres.add(newLivre);
     }
 
@@ -131,7 +150,10 @@ public class Model {
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
         newLivre.setColonne(Short.parseShort(livre.get(5)));
-        newLivre.setRangee(Short.parseShort((livre.get(6))));
+        newLivre.setRangee(Short.parseShort(livre.get(6)));
+        newLivre.setPret(Boolean.parseBoolean(livre.get(7)));
+        newLivre.setAcquis(livre.get(8));
+        newLivre.setImgUrl(livre.get(9));
         livres.set(index, newLivre);
     }
 
