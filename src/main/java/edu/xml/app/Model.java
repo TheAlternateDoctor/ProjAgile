@@ -100,9 +100,9 @@ public class Model {
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
-            convertedLivres[i][6] = String.valueOf(livre.isPret());
+            convertedLivres[i][6] = livre.getImgUrl();
             convertedLivres[i][7] = livre.getAcquis();
-            convertedLivres[i][8] = livre.getImgUrl();
+            System.out.println(livre.getAcquis());
         }
         return convertedLivres;
     }
@@ -141,6 +141,7 @@ public class Model {
     }
 
     public void modifyLivre(int index, List<String> livre) {
+
         Livre newLivre = new Livre();
         Auteur newAuteur = new Auteur();
         newLivre.setTitre(livre.get(0));

@@ -10,7 +10,7 @@
         <parution>2000</parution>
         <colonne>5</colonne>
         <rangee>2</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Public\Images\gray.jpg</img_url>
     </livre>
     <livre>
@@ -23,7 +23,7 @@
         <parution>1996</parution>
         <colonne>5</colonne>
         <rangee>2</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Public\Images\demon.jpg</img_url>
     </livre>
     <livre>
@@ -36,7 +36,7 @@
         <parution>1996</parution>
         <colonne>0</colonne>
         <rangee>0</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Public\Images\téléchargement.jpg</img_url>
     </livre>
     <livre>
@@ -49,7 +49,7 @@
         <parution>2000</parution>
         <colonne>0</colonne>
         <rangee>0</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Public\Images\image4.jpg</img_url>
     </livre>
     <livre>
@@ -62,7 +62,7 @@
         <parution>1990</parution>
         <colonne>10</colonne>
         <rangee>10</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter1.jpg</img_url>
 
     </livre>
@@ -76,7 +76,7 @@
         <parution>1875</parution>
         <colonne>1</colonne>
         <rangee>1</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter2.jpg</img_url>
 
     </livre>
@@ -90,7 +90,7 @@
         <parution>3844</parution>
         <colonne>15</colonne>
         <rangee>14</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -103,7 +103,7 @@
         <parution>3844</parution>
         <colonne>15</colonne>
         <rangee>14</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
     </livre>
     <livre>
         <titre>Harry Potter</titre>
@@ -115,7 +115,7 @@
         <parution>1996</parution>
         <colonne>20</colonne>
         <rangee>20</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
     </livre>
     <livre>
         <titre>test</titre>
@@ -127,7 +127,7 @@
         <parution>2019</parution>
         <colonne>20</colonne>
         <rangee>19</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -140,7 +140,7 @@
         <parution>1924</parution>
         <colonne>39</colonne>
         <rangee>45</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -153,7 +153,7 @@
         <parution>4046</parution>
         <colonne>46</colonne>
         <rangee>23</rangee>
-        <pret>false</pret>
+        <acquis>2</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -166,7 +166,7 @@
         <parution>90</parution>
         <colonne>45</colonne>
         <rangee>90</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -179,7 +179,7 @@
         <parution>45</parution>
         <colonne>90</colonne>
         <rangee>23</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -192,7 +192,7 @@
         <parution>30</parution>
         <colonne>130</colonne>
         <rangee>197</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
 
     </livre>
@@ -206,7 +206,7 @@
         <parution>1954</parution>
         <colonne>6</colonne>
         <rangee>11</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url></img_url>
     </livre>
     <livre>
@@ -219,7 +219,7 @@
         <parution>1954</parution>
         <colonne>6</colonne>
         <rangee>11</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
     </livre>
     <livre>
         <titre>test</titre>
@@ -231,7 +231,7 @@
         <parution>1355</parution>
         <colonne>19</colonne>
         <rangee>23</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
     <livre>
@@ -245,7 +245,7 @@
         <img_url>C:\Users\pheph\OneDrive\Bureau\windows.jpg</img_url>
         <colonne>13</colonne>
         <rangee>12</rangee>
-        <pret>false</pret>
+        <acquis>1</acquis>
         <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
 </bibliotheque>
