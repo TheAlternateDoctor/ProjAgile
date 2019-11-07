@@ -126,7 +126,7 @@ public class View extends JFrame { // Mainwindow
         containerButton.add(adds);
         containerButton.add(delete);
         containerButton.setPreferredSize(new Dimension(10,50));
-        mainWindow.getContentPane().add(containerButton,BorderLayout.AFTER_LAST_LINE);
+        mainWindow.getContentPane().add(containerButton,BorderLayout.SOUTH);
          Confirmer=new JButton("Confirmer");
         // Print
         this.mainWindow.setVisible(true);
