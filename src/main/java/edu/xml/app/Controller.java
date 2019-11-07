@@ -1,8 +1,5 @@
 package edu.xml.app;
 
-import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +8,6 @@ public class Controller {
 
     private View view;
     private Model model;
-    private ActionListener actionListener;
 
     public Controller() {
         this.view = new View();
@@ -51,7 +47,7 @@ public class Controller {
         view.getConfirmer().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<String> Addlivres = new ArrayList();
+                List<String> Addlivres = new ArrayList<>();
                Addlivres.add(view.getSetTitre().getText());
                Addlivres.add(view.getSetNomAuteur().getText());
                Addlivres.add(view.getSetPrenomAuteur().getText());
