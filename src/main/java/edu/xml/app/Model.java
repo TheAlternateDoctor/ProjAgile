@@ -110,7 +110,7 @@ public class Model {
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
             convertedLivres[i][6] = livre.getImgUrl();
             convertedLivres[i][7] = livre.getAcquis();
-            System.out.println(livre.getAcquis());
+
         }
         return convertedLivres;
     }
@@ -153,16 +153,21 @@ public class Model {
         Livre newLivre = new Livre();
         Auteur newAuteur = new Auteur();
         newLivre.setTitre(livre.get(0));
+
         newAuteur.setNom(livre.get(1));
-        newAuteur.setPrenom(livre.get(2));
+        newAuteur.setPrenom(" ");
         newLivre.setAuteur(newAuteur);
-        newLivre.setPresentation(livre.get(3));
-        newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(Short.parseShort(livre.get(5)));
-        newLivre.setRangee(Short.parseShort(livre.get(6)));
-        newLivre.setPret(Boolean.parseBoolean(livre.get(7)));
-        newLivre.setAcquis(livre.get(8));
-        newLivre.setImgUrl(livre.get(9));
+
+        newLivre.setPresentation(livre.get(2));
+
+        newLivre.setParution(Integer.parseInt(livre.get(3)));
+
+        newLivre.setColonne(Short.parseShort(livre.get(4)));
+        newLivre.setRangee(Short.parseShort(livre.get(5)));
+        newLivre.setImgUrl(livre.get(6));
+
+        newLivre.setAcquis(" ");
+
         livres.set(index, newLivre);
     }
 
