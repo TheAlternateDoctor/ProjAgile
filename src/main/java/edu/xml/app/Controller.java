@@ -1,6 +1,8 @@
 package edu.xml.app;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +59,14 @@ public class Controller {
                Addlivres.add(view.getSetParution().getText());
                Addlivres.add(view.getSetRangee().getText());
                Addlivres.add(view.getSetcol().getText());
+               Addlivres.add(view.getTypeEmprunt().getName());
+               Addlivres.add(view.getSetUrlImg().getText());
                model.addLivre(Addlivres);
                model.saveFile();
-               String[] donnees = {view.getSetTitre().getText(),view.getSetNomAuteur().getText()+" "+view.getSetPrenomAuteur().getText(),view.getSetPresentation().getText(),view.getSetParution().getText(),view.getSetRangee().getText(),view.getSetcol().getText()};
+               String[] donnees = {view.getSetTitre().getText(),view.getSetNomAuteur().getText()+" "+view.getSetPrenomAuteur().getText(),view.getSetPresentation().getText(),view.getSetParution().getText(),view.getSetRangee().getText(),view.getSetcol().getText(),view.getTypeEmprunt().getName(),view.getSetUrlImg().getText()};
                view.addTable(donnees);
+               view.addIMG(view.getSetUrlImg().getText());
+
 
                                            }
         });
@@ -72,7 +78,9 @@ public class Controller {
                 model.saveFile();
             }
         });
+        view.updateIMG();
 
     }
+
 
 }

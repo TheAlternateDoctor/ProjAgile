@@ -15,7 +15,7 @@ import edu.xml.helpers.Bibliotheque.Livre.Auteur;
 import edu.xml.helpers.ObjectFactory;
 
 public class Model {
-    
+
     private List<Livre> livres;
     private String filepath;
     private Bibliotheque bibliotheque;
@@ -77,7 +77,7 @@ public class Model {
     }
 
     public String[][] getLivres() {
-        String[][] convertedLivres = new String[livres.size()][5];
+        String[][] convertedLivres = new String[livres.size()][7];
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
             convertedLivres[i][0] = livre.getTitre();
@@ -86,6 +86,8 @@ public class Model {
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
+            convertedLivres[i][5]=livre.getAcquis();
+            convertedLivres[i][6]=livre.getImgUrl();
         }
         return convertedLivres;
     }
@@ -112,8 +114,10 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(livre.get(5));
-        newLivre.setRangee((livre.get(6)));
+        newLivre.setColonne(Short.parseShort(livre.get(5)));
+        newLivre.setRangee(Short.parseShort((livre.get(6))));
+        newLivre.setAcquis(livre.get(7));
+        newLivre.setImgUrl(livre.get(8));
         livres.add(newLivre);
     }
 
@@ -126,8 +130,8 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(livre.get(5));
-        newLivre.setRangee((livre.get(6)));
+        newLivre.setColonne(Short.parseShort(livre.get(5)));
+        newLivre.setRangee(Short.parseShort((livre.get(6))));
         livres.set(index, newLivre);
     }
 

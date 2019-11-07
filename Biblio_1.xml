@@ -10,6 +10,8 @@
         <parution>2000</parution>
         <colonne>5</colonne>
         <rangee>2</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\gray.jpg</img_url>
     </livre>
     <livre>
         <titre>HarryPotter</titre>
@@ -21,6 +23,8 @@
         <parution>1996</parution>
         <colonne>5</colonne>
         <rangee>2</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\demon.jpg</img_url>
     </livre>
     <livre>
         <titre>test</titre>
@@ -32,6 +36,8 @@
         <parution>1996</parution>
         <colonne>0</colonne>
         <rangee>0</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\téléchargement.jpg</img_url>
     </livre>
     <livre>
         <titre>Test</titre>
@@ -39,9 +45,207 @@
             <nom>Teeest</nom>
             <prenom>TEST</prenom>
         </auteur>
-        <presentation>Tessst</presentation>
+        <presentation>Tesst</presentation>
         <parution>2000</parution>
         <colonne>0</colonne>
         <rangee>0</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\image4.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>1990</parution>
+        <colonne>10</colonne>
+        <rangee>10</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter1.jpg</img_url>
+
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>1875</parution>
+        <colonne>1</colonne>
+        <rangee>1</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter2.jpg</img_url>
+
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>3844</parution>
+        <colonne>15</colonne>
+        <rangee>14</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>3844</parution>
+        <colonne>15</colonne>
+        <rangee>14</rangee>
+        <pret>false</pret>
+    </livre>
+    <livre>
+        <titre>Harry Potter</titre>
+        <auteur>
+            <nom>JK</nom>
+            <prenom>Rwling</prenom>
+        </auteur>
+        <presentation>introduction</presentation>
+        <parution>1996</parution>
+        <colonne>20</colonne>
+        <rangee>20</rangee>
+        <pret>false</pret>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>2019</parution>
+        <colonne>20</colonne>
+        <rangee>19</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test2</presentation>
+        <parution>1924</parution>
+        <colonne>39</colonne>
+        <rangee>45</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>TEST4</titre>
+        <auteur>
+            <nom>TEST4</nom>
+            <prenom>TEST4</prenom>
+        </auteur>
+        <presentation>TST4</presentation>
+        <parution>4046</parution>
+        <colonne>46</colonne>
+        <rangee>23</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>TEST9</titre>
+        <auteur>
+            <nom>TEST9</nom>
+            <prenom>TEST9</prenom>
+        </auteur>
+        <presentation>TEST9</presentation>
+        <parution>90</parution>
+        <colonne>45</colonne>
+        <rangee>90</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>TEST4</titre>
+        <auteur>
+            <nom>TEST4</nom>
+            <prenom>TEST45</prenom>
+        </auteur>
+        <presentation>TEST</presentation>
+        <parution>45</parution>
+        <colonne>90</colonne>
+        <rangee>23</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>bla</titre>
+        <auteur>
+            <nom>bla</nom>
+            <prenom>bla</prenom>
+        </auteur>
+        <presentation>bla</presentation>
+        <parution>30</parution>
+        <colonne>130</colonne>
+        <rangee>197</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+
+    </livre>
+    <livre>
+        <titre>path</titre>
+        <auteur>
+            <nom>image</nom>
+            <prenom>afficher</prenom>
+        </auteur>
+        <presentation>test&amp;</presentation>
+        <parution>1954</parution>
+        <colonne>6</colonne>
+        <rangee>11</rangee>
+        <pret>false</pret>
+        <img_url></img_url>
+    </livre>
+    <livre>
+        <titre>path</titre>
+        <auteur>
+            <nom>image</nom>
+            <prenom>afficher</prenom>
+        </auteur>
+        <presentation>test&amp;</presentation>
+        <parution>1954</parution>
+        <colonne>6</colonne>
+        <rangee>11</rangee>
+        <pret>false</pret>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>presentation</presentation>
+        <parution>1355</parution>
+        <colonne>19</colonne>
+        <rangee>23</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
+    </livre>
+    <livre>
+        <titre>test</titre>
+        <auteur>
+            <nom>test</nom>
+            <prenom>test</prenom>
+        </auteur>
+        <presentation>test</presentation>
+        <parution>1955</parution>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\windows.jpg</img_url>
+        <colonne>13</colonne>
+        <rangee>12</rangee>
+        <pret>false</pret>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\Potter3.jpg</img_url>
     </livre>
 </bibliotheque>
