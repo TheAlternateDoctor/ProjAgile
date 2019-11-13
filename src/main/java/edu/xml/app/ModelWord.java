@@ -3,6 +3,7 @@ package edu.xml.app;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,11 +14,14 @@ import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFHyperlinkRun;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTBookmark;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTHyperlink;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTR;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTSectPr;
@@ -47,25 +51,25 @@ public class ModelWord {
         }
     }
 
-    public void buildModel(){
+    public void buildModel() {
 
-        //Builds header
-	    CTSectPr sectPr = document.getDocument().getBody().addNewSectPr();
+        // Builds header
+        CTSectPr sectPr = document.getDocument().getBody().addNewSectPr();
         XWPFHeaderFooterPolicy policy = new XWPFHeaderFooterPolicy(document, sectPr);
         CTP ctpHeader = CTP.Factory.newInstance();
-	    CTR ctrHeader = ctpHeader.addNewR();
-		CTText ctHeader = ctrHeader.addNewT();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
+        CTR ctrHeader = ctpHeader.addNewR();
+        CTText ctHeader = ctrHeader.addNewT();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime now = LocalDateTime.now();
-		String headerText = dtf.format(now)+" "+filename;
-		ctHeader.setStringValue(headerText);	
+        String headerText = dtf.format(now) + " " + filename;
+        ctHeader.setStringValue(headerText);
         XWPFParagraph headerParagraph = new XWPFParagraph(ctpHeader, document);
         headerParagraph.setAlignment(ParagraphAlignment.CENTER);
-	    XWPFParagraph[] parsHeader = new XWPFParagraph[1];
-	    parsHeader[0] = headerParagraph;
+        XWPFParagraph[] parsHeader = new XWPFParagraph[1];
+        parsHeader[0] = headerParagraph;
         policy.createHeader(XWPFHeaderFooterPolicy.DEFAULT, parsHeader);
-        
-        //Builds page de garde
+
+        // Builds page de garde
         XWPFParagraph garde = document.createParagraph();
         XWPFRun gardeRun = garde.createRun();
         gardeRun.addBreak();
@@ -77,7 +81,7 @@ public class ModelWord {
         gardeRun.setBold(true);
         garde.setAlignment(ParagraphAlignment.CENTER);
 
-        //Builds Sommaire
+        // Builds Sommaire
         XWPFParagraph sommaire = document.createParagraph();
         XWPFRun runSommaire = sommaire.createRun();
         runSommaire.setText("SOMMAIRE");
@@ -85,11 +89,26 @@ public class ModelWord {
         sommaire.setPageBreak(true);
         sommaire.setAlignment(ParagraphAlignment.CENTER);
 
-        // document.createTOC();
-
-
         List<Livre> livres = sortBiblio();
-
+        String actualAuthor = "";
+        XWPFParagraph contents = null;
+        for (Livre livreContent : livres) {
+            try {
+                if (!actualAuthor.equals(livreContent.getAuteur().getPrenom() + " " + livreContent.getAuteur().getNom())) {
+                    actualAuthor = livreContent.getAuteur().getPrenom() + " " + livreContent.getAuteur().getNom();
+                    contents = document.createParagraph();
+                    XWPFHyperlinkRun contentsRun = createHyperlinkRunToAnchor(contents, actualAuthor);
+                    contentsRun.setText(actualAuthor);
+                    contentsRun.setFontSize(13);
+                    contentsRun.setBold(true);
+                    contents.setAlignment(ParagraphAlignment.LEFT);
+                    contents.setStyle("Heading2");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        actualAuthor = "";
 
         XWPFParagraph listeLivres = document.createParagraph();
         listeLivres.setPageBreak(true);
@@ -99,7 +118,6 @@ public class ModelWord {
         listeLivres.setStyle("Heading1");
         listeLivres.setAlignment(ParagraphAlignment.CENTER);
 
-        String actualAuthor = "";
         XWPFParagraph author = null;
         XWPFRun authorRun = null;
         XWPFTable livreTable = null;
@@ -108,12 +126,14 @@ public class ModelWord {
         XWPFParagraph livreDisp = null;
         XWPFRun livreRun = null;
         XWPFParagraph imgDisp = null;
-        XWPFRun imgRun = null;
+        XWPFRun imgRun = null; 
+        int bookmarkId = 0;
+            
         for(Livre livre: livres){
             try{
                 if(!actualAuthor.equals(livre.getAuteur().getPrenom() + " " + livre.getAuteur().getNom()) ){
                     actualAuthor = livre.getAuteur().getPrenom() + " " + livre.getAuteur().getNom();
-                    author = document.createParagraph();
+                    author = createBookmarkedParagraph(document, actualAuthor, bookmarkId++);
                     authorRun = author.createRun();
                     authorRun.setText(actualAuthor);
                     authorRun.setFontSize(20);
@@ -219,5 +239,26 @@ public class ModelWord {
         List<Livre> livres = bibliotheque.getLivre();
         livres.sort((o1, o2) -> o1.getAuteur().getNom().compareTo(o2.getAuteur().getNom()));
         return livres;
+    }
+
+    private XWPFHyperlinkRun createHyperlinkRunToAnchor(XWPFParagraph paragraph, String anchor) throws Exception {
+        CTHyperlink cthyperLink=paragraph.getCTP().addNewHyperlink();
+        cthyperLink.setAnchor(anchor);
+        cthyperLink.addNewR();
+        return new XWPFHyperlinkRun(
+          cthyperLink,
+          cthyperLink.getRArray(0),
+          paragraph
+         );
+    }
+      
+    private XWPFParagraph createBookmarkedParagraph(XWPFDocument document, String anchor, int bookmarkId) {
+        XWPFParagraph paragraph = document.createParagraph();
+        CTBookmark bookmark = paragraph.getCTP().addNewBookmarkStart();
+        bookmark.setName(anchor);
+        bookmark.setId(BigInteger.valueOf(bookmarkId));
+        XWPFRun run = paragraph.createRun();
+        paragraph.getCTP().addNewBookmarkEnd().setId(BigInteger.valueOf(bookmarkId));
+        return paragraph;
     }
 }

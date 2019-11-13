@@ -38,7 +38,9 @@ public class Model {
 
     public Model() {
         readFile("./Biblio_1.xml");
-        new ModelWord(bibliotheque, "test.txt");
+        ModelWord model = new ModelWord(bibliotheque, "test.txt");
+        model.buildModel();
+        model.exportModel("/home/mathys/Cours/Prog Avancée/test.docx");
     }
 
     public void exportTo(String filepath){
