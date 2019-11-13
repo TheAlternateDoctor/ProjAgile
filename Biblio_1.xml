@@ -12,6 +12,7 @@
         <colonne>5</colonne>
         <rangee>2</rangee>
         <acquis>Emprunter</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>true</pret>
     </livre>
     <livre>
@@ -22,12 +23,12 @@
         </auteur>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
         <parution>1996</parution>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\demon.jpg</img_url>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\410K-S--pmL.jpg</img_url>
         <colonne>5</colonne>
         <rangee>2</rangee>
         <acquis>Preter</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>false</pret>
-
     </livre>
     <livre>
         <titre>test</titre>
@@ -37,10 +38,11 @@
         </auteur>
         <presentation>test</presentation>
         <parution>1996</parution>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\téléchargement.jpg</img_url>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\demon.jpg</img_url>
         <colonne>0</colonne>
         <rangee>0</rangee>
         <acquis>Preter</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -51,10 +53,11 @@
         </auteur>
         <presentation>Tesst</presentation>
         <parution>2000</parution>
-        <img_url>C:\Users\pheph\OneDrive\Public\Images\image4.jpg</img_url>
+        <img_url>C:\Users\pheph\OneDrive\Bureau\image\books4.jpg</img_url>
         <colonne>0</colonne>
         <rangee>0</rangee>
         <acquis>Preter</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -69,6 +72,7 @@
         <colonne>10</colonne>
         <rangee>10</rangee>
         <acquis>Emprunter</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>true</pret>
     </livre>
     <livre>
@@ -83,6 +87,7 @@
         <colonne>1</colonne>
         <rangee>1</rangee>
         <acquis>Emprunter</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>true</pret>
     </livre>
     <livre>
@@ -97,32 +102,7 @@
         <colonne>15</colonne>
         <rangee>14</rangee>
         <acquis>Preter</acquis>
-        <pret>false</pret>
-    </livre>
-    <livre>
-        <titre>test</titre>
-        <auteur>
-            <nom>test</nom>
-            <prenom>test</prenom>
-        </auteur>
-        <presentation>test</presentation>
-        <parution>3844</parution>
-        <colonne>15</colonne>
-        <rangee>14</rangee>
-        <acquis>Posseder</acquis>
-        <pret>false</pret>
-    </livre>
-    <livre>
-        <titre>Harry Potter</titre>
-        <auteur>
-            <nom>JK</nom>
-            <prenom>Rwling</prenom>
-        </auteur>
-        <presentation>introduction</presentation>
-        <parution>1996</parution>
-        <colonne>20</colonne>
-        <rangee>20</rangee>
-        <acquis>Posseder</acquis>
+        <nom_acquis>Stephen</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -137,6 +117,7 @@
         <colonne>20</colonne>
         <rangee>19</rangee>
         <acquis>Emprunter</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>true</pret>
     </livre>
     <livre>
@@ -151,6 +132,7 @@
         <colonne>39</colonne>
         <rangee>45</rangee>
         <acquis>Posseder</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -165,6 +147,7 @@
         <colonne>46</colonne>
         <rangee>23</rangee>
         <acquis>Preter</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -179,6 +162,7 @@
         <colonne>45</colonne>
         <rangee>90</rangee>
         <acquis>Poseder</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -193,6 +177,7 @@
         <colonne>90</colonne>
         <rangee>23</rangee>
         <acquis>Emprunter</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>true</pret>
     </livre>
     <livre>
@@ -207,33 +192,7 @@
         <colonne>130</colonne>
         <rangee>197</rangee>
         <acquis>Emprunter</acquis>
-        <pret>true</pret>
-    </livre>
-    <livre>
-        <titre>path</titre>
-        <auteur>
-            <nom>image</nom>
-            <prenom>afficher</prenom>
-        </auteur>
-        <presentation>test;</presentation>
-        <parution>1954</parution>
-        <img_url></img_url>
-        <colonne>6</colonne>
-        <rangee>11</rangee>
-        <acquis>Posseder</acquis>
-        <pret>true</pret>
-    </livre>
-    <livre>
-        <titre>path</titre>
-        <auteur>
-            <nom>image</nom>
-            <prenom>afficher</prenom>
-        </auteur>
-        <presentation>test</presentation>
-        <parution>1954</parution>
-        <colonne>6</colonne>
-        <rangee>11</rangee>
-        <acquis>Emprunter</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>true</pret>
     </livre>
     <livre>
@@ -248,6 +207,7 @@
         <colonne>19</colonne>
         <rangee>23</rangee>
         <acquis>Posseder</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>false</pret>
     </livre>
     <livre>
@@ -262,6 +222,37 @@
         <colonne>13</colonne>
         <rangee>12</rangee>
         <acquis>Posseder</acquis>
+        <nom_acquis>Mathys</nom_acquis>
         <pret>false</pret>
+    </livre>
+    <livre>
+        <titre>L'attaque des titans</titre>
+        <auteur>
+            <nom>Hajime</nom>
+            <prenom>Isayama</prenom>
+        </auteur>
+        <presentation>BDAZIZDA</presentation>
+        <parution>2010</parution>
+        <img_url>Emprunter</img_url>
+        <colonne>13</colonne>
+        <rangee>12</rangee>
+        <acquis>C:\Users\pheph\OneDrive\Public\Images\gray.jpg</acquis>
+        <nom_acquis>Stephen</nom_acquis>
+        <pret>false</pret>
+    </livre>
+    <livre>
+        <titre>titre livre</titre>
+        <auteur>
+            <nom>Nom auteur</nom>
+            <prenom>Prenom auteur</prenom>
+        </auteur>
+        <presentation>Presentation</presentation>
+        <parution>2010</parution>
+        <img_url>C:\Users\pheph\OneDrive\Public\Images\gray.jpg</img_url>
+        <colonne>10</colonne>
+        <rangee>10</rangee>
+        <acquis>Emprunter</acquis>
+        <nom_acquis>Steph</nom_acquis>
+        <pret>true</pret>
     </livre>
 </bibliotheque>

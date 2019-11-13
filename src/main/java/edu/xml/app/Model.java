@@ -27,6 +27,7 @@ public class Model {
     Rangee
     Pret
     Acquis
+    Nom Acquis
     Img_Url
 */
 
@@ -84,6 +85,7 @@ public class Model {
         }
     }
 
+
     public boolean saveFile(String filepath) {
         JAXBContext jaxbContext;
         try {
@@ -110,6 +112,8 @@ public class Model {
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
             convertedLivres[i][6] = livre.getImgUrl();
             convertedLivres[i][7] = livre.getAcquis();
+            convertedLivres[i][8] = livre.getNomAcquis();
+
 
         }
         return convertedLivres;
@@ -127,6 +131,7 @@ public class Model {
         convertedLivre.add(String.valueOf(livre.getRangee()));
         convertedLivre.add(String.valueOf(livre.isPret()));
         convertedLivre.add(livre.getAcquis());
+        convertedLivre.add(livre.getNomAcquis());
         convertedLivre.add(livre.getImgUrl());
         return convertedLivre;
     }
@@ -140,16 +145,26 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(Short.parseShort(livre.get(5)));
-        newLivre.setRangee(Short.parseShort((livre.get(6))));
-        newLivre.setPret(Boolean.parseBoolean(livre.get(7)));
+        newLivre.setColonne(Short.parseShort(livre.get(6)));
+        newLivre.setRangee(Short.parseShort((livre.get(5))));
+        newLivre.setImgUrl(livre.get(7));
+        if(livre.get(8).equals("Emprunter")){
+            newLivre.setPret(true);
+        }
+        else{
+            newLivre.setPret(false);
+        }
+
         newLivre.setAcquis(livre.get(8));
-        newLivre.setImgUrl(livre.get(9));
+
+        newLivre.setNomAcquis(livre.get(9));
+
         livres.add(newLivre);
     }
 
+
     public void modifyLivre(int index, List<String> livre) {
-        System.out.println(livre);
+
         Livre newLivre = new Livre();
         Auteur newAuteur = new Auteur();
         newLivre.setTitre(livre.get(0));
@@ -165,14 +180,15 @@ public class Model {
         newLivre.setColonne(Short.parseShort(livre.get(4)));
         newLivre.setRangee(Short.parseShort(livre.get(5)));
         newLivre.setImgUrl(livre.get(6));
-        newLivre.setAcquis(livre.get(7));
+        newLivre.setNomAcquis(livre.get(7));
 
+        newLivre.setAcquis(" ");
 
         livres.set(index, newLivre);
-        System.out.println(newLivre.getTitre());
     }
 
     public void removeLivre(int index) {
+
         livres.remove(livres.get(index));
     }
 }
