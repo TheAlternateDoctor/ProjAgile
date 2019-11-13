@@ -1,6 +1,5 @@
 package edu.xml.app;
 
-import edu.xml.app.Views.MainView;
 
 public class Main {
 
