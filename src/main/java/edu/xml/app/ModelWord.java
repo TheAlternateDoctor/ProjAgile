@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
@@ -43,6 +44,9 @@ public class ModelWord {
     public void exportModel(String filepath) {
         FileOutputStream out;
         try {
+            String fileExt = FilenameUtils.getExtension(filepath);
+            if(fileExt != "docx")
+                filepath += ".docx";
             out = new FileOutputStream(filepath);
             document.write(out);
             document.close();

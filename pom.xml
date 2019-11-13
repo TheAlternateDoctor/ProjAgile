@@ -25,6 +25,11 @@
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>
@@ -54,7 +59,6 @@
                             <artifactId>jaxb-api</artifactId>
                             <version>2.4.0-b180830.0359</version>
                         </dependency>
-
                     </dependencies>
                     <configuration>
                         <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
