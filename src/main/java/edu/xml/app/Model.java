@@ -1,18 +1,16 @@
 package edu.xml.app;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import edu.xml.helpers.Bibliotheque;
+import edu.xml.helpers.Bibliotheque.Livre;
+import edu.xml.helpers.Bibliotheque.Livre.Auteur;
+import edu.xml.helpers.ObjectFactory;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-
-import edu.xml.helpers.Bibliotheque;
-import edu.xml.helpers.Bibliotheque.Livre;
-import edu.xml.helpers.Bibliotheque.Livre.Auteur;
-import edu.xml.helpers.ObjectFactory;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
 
@@ -87,6 +85,7 @@ public class Model {
         }
     }
 
+
     public boolean saveFile(String filepath) {
         JAXBContext jaxbContext;
         try {
@@ -111,9 +110,16 @@ public class Model {
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
+
+            convertedLivres[i][6] = livre.getImgUrl();
+            convertedLivres[i][7] = livre.getAcquis();
+            convertedLivres[i][8] = livre.getNomAcquis();
+
+
             convertedLivres[i][6] = livre.getAcquis();
             convertedLivres[i][7] = livre.getNomAcquis();
             convertedLivres[i][8] = livre.getImgUrl();
+
 
         }
         return convertedLivres;
@@ -145,14 +151,28 @@ public class Model {
         newLivre.setAuteur(newAuteur);
         newLivre.setPresentation(livre.get(3));
         newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(Short.parseShort(livre.get(5)));
-        newLivre.setRangee(Short.parseShort((livre.get(6))));
-        newLivre.setPret(Boolean.parseBoolean(livre.get(7)));
+        newLivre.setColonne(Short.parseShort(livre.get(6)));
+        newLivre.setRangee(Short.parseShort((livre.get(5))));
+        newLivre.setImgUrl(livre.get(7));
+        if(livre.get(8).equals("Emprunter")){
+            newLivre.setPret(true);
+        }
+        else{
+            newLivre.setPret(false);
+        }
+
         newLivre.setAcquis(livre.get(8));
+
+
+        newLivre.setNomAcquis(livre.get(9));
+
+
         newLivre.setNomAcquis(livre.get(9));
         newLivre.setImgUrl(livre.get(8));
+
         livres.add(newLivre);
     }
+
 
     public void modifyLivre(int index, List<String> livre) {
 
@@ -179,6 +199,7 @@ public class Model {
     }
 
     public void removeLivre(int index) {
+
         livres.remove(livres.get(index));
     }
 }

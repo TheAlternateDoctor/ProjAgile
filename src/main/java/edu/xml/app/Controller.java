@@ -1,101 +1,101 @@
 package edu.xml.app;
 
+import edu.xml.app.Views.AddsView;
+import edu.xml.app.Views.MainView;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
 
-    private View view;
+
     private Model model;
+    private MainView mainview;
+    AddsView adsBook;
 
     public Controller() {
-        this.view = new View();
+
+        this.mainview=new MainView();
         this.model = new Model();
+
 
     }
 
     public void control(){
 
-        view.getOpenfile().addActionListener(new ActionListener() {
+        mainview.getOpenFile().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                model.readFile(view.Openfile());
-                view.table(model.getLivres());
+                model.readFile(mainview.OpenfileButton());
+                mainview.table(model.getLivres());
             }
         });
-        view.getSave().addActionListener(new ActionListener() {
+        mainview.getNewFile().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+             mainview.newFileButton();
+            }
+        });
+        mainview.getAdds().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                adsBook=new AddsView();
+                adsBook.getApply().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        List<String> Addlivres = new ArrayList<>();
+
+                        Addlivres.add(adsBook.getsBook().getText());
+                        Addlivres.add(adsBook.getsAuthorName().getText());
+                        Addlivres.add(adsBook.getsAuthorFirstName().getText());
+                        Addlivres.add(adsBook.getSpresentation().getText());
+                        Addlivres.add(adsBook.getsRelease().getText());
+                        Addlivres.add(adsBook.getsLine().getText());
+                        Addlivres.add(adsBook.getScol().getText());
+                        Addlivres.add(adsBook.getsImage().getText());
+                        Addlivres.add(String.valueOf(adsBook.getStatusBox().getSelectedItem()));
+                        Addlivres.add(adsBook.getsHolder().getText());
+                        System.out.println(Addlivres);
+                        model.addLivre(Addlivres);
+                        String[] donnees = {
+                            adsBook.getsBook().getText(),
+                            adsBook.getsAuthorName().getText()+ " "+adsBook.getsAuthorFirstName().getText(),
+                            adsBook.getSpresentation().getText(),
+                            adsBook.getsRelease().getText(),adsBook.getsLine().getText(),adsBook.getScol().getText(),
+                            adsBook.getsImage().getText(),String.valueOf(adsBook.getStatusBox().getSelectedItem()),adsBook.getsHolder().getText()};
+                        mainview.addTable(donnees);
+                        adsBook.dispose();
+                    }
+                });
+            }
+        });
+        mainview.getSave().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.saveFile();
-            }
-        });
-        view.getSaveAs().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                model.saveFile(view.Openfile());
-            }
-        });
-        view.getExport().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                model.exportTo(view.OpenfileDocx());
-            }
-        });
-        view.getEnd().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.quitter();
-            }
-        });
-        view.getNewfile().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.newfile();
-            }
-        });
-        view.getAdds().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("test");
-                view.Ajouter();
-            }
-        });
-        view.getConfirmer().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                List<String> Addlivres = new ArrayList<>();
-               Addlivres.add(view.getSetTitre().getText());
-               Addlivres.add(view.getSetNomAuteur().getText());
-               Addlivres.add(view.getSetPrenomAuteur().getText());
-               Addlivres.add(view.getSetPresentation().getText());
-               Addlivres.add(view.getSetParution().getText());
-               Addlivres.add(view.getSetRangee().getText());
-               Addlivres.add(view.getSetcol().getText());
-               Addlivres.add(view.getTypeEmprunt().getName());
-               Addlivres.add(view.getSetUrlImg().getText());
-               model.addLivre(Addlivres);
-               String[] donnees = {view.getSetTitre().getText(),view.getSetNomAuteur().getText()+" "+view.getSetPrenomAuteur().getText(),view.getSetPresentation().getText(),view.getSetParution().getText(),view.getSetRangee().getText(),view.getSetcol().getText(),view.getTypeEmprunt().getName(),view.getSetUrlImg().getText()};
-               view.addTable(donnees);
-               view.addIMG(view.getSetUrlImg().getText());
 
-
-                                           }
-        });
-        view.getDelete().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                model.removeLivre(view.supprimer());
-                view.removeTable(view.supprimer());
             }
         });
-        view.updateIMG();
-        view.getApply().addActionListener(new ActionListener() {
+        mainview.editForm();
+        mainview.getDelete().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.modifyLivre(view.getTableau().getSelectedRow(),view.modifyView());
-
+                model.removeLivre(mainview.supprimer());
+                mainview.removeTable(mainview.supprimer());
+            }
+        });
+        mainview.getExportToDocx().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.exportTo(mainview.OpenfileButton());
+            }
+        });
+        mainview.getSaveAs().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.saveFile(mainview.OpenfileButton());
             }
         });
     }

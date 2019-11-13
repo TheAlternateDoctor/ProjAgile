@@ -46,7 +46,8 @@ public class View extends JFrame { // Mainwindow
     private JComboBox typeEmprunt;
     private JTextField setUrlImg;
     private JLabel imageLabel;
-
+    private JLabel PossesseurLabel;
+    private JTextField sPossesseur;
     public JButton getApply() {
         return apply;
     }
@@ -56,6 +57,7 @@ public class View extends JFrame { // Mainwindow
     private JLabel image;
     private JTextField sUrl;
     private JPanel panIMG;
+    private JCheckBox isEmprunt;
     public static long count = 0;
 
     public JTextField getSetUrlImg() {
@@ -95,7 +97,8 @@ public class View extends JFrame { // Mainwindow
 
 
         mainWindow = new JFrame("Agile");
-       mainWindow.setSize(800,800);
+        mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainWindow.setUndecorated(true);
         leftContainer=new Container();
         leftContainer.setLayout(new BorderLayout(9,9));
         container = new Container();
@@ -157,6 +160,7 @@ public class View extends JFrame { // Mainwindow
         panForm.setBorder((BorderFactory.createTitledBorder("Formulaire d'interaction")));
 
         livreLabel = new JLabel("Titre : ");
+        PossesseurLabel=new JLabel("Possesseur:");
         parutionLabel = new JLabel("Parution : ");
         nomAuteurLabel = new JLabel("Nom ");
         prenomAuteurLabel = new JLabel("Prenom");
@@ -170,14 +174,14 @@ public class View extends JFrame { // Mainwindow
         sauteurprenom = new JTextField();
         srangee = new JTextField();
         sUrl=new JTextField();
-
+        sPossesseur=new JTextField();
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
 
         spresentation = new JTextArea(3, 3);
         spresentation.setBorder(border);
         scolonne = new JTextField();
-        Object[] elements = new Object[]{"Pret", "Acquis", "preter"};
+        Object[] elements = new Object[]{"Emprunter", "Acquis", "Posseder"};
         typeEmprunt= new JComboBox(elements);
 
         Box BLivre = Box.createHorizontalBox();
@@ -224,6 +228,13 @@ public class View extends JFrame { // Mainwindow
         JLabel Possesseur=new JLabel("Possesseur");
 
         JLabel Status=new JLabel("Status:");
+        isEmprunt=new JCheckBox();
+
+        JLabel isEmpruntLabel=new JLabel("Emprunter");
+        haut.add(PossesseurLabel);
+        haut.add(sPossesseur);
+        haut.add(isEmpruntLabel);
+        haut.add(isEmprunt);
         haut.add(Status);
         haut.add(typeEmprunt);
         haut.add(BLivre);
@@ -236,7 +247,6 @@ public class View extends JFrame { // Mainwindow
         haut.add(imageLabel);
         haut.add(sUrl);
         haut.add(apply);
-
         panForm.add(haut);
         mainWindow.getContentPane().add(panForm,BorderLayout.EAST);
         mainWindow.getContentPane().add(containerButton,BorderLayout.SOUTH);
@@ -368,7 +378,7 @@ System.out.println("Debug");
 
     public void table(String[][] donnees) {
         // Tableau XML
-        final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne","Urlimg","Status" };
+        final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne","Urlimg","Status","nomPossesseur" };
 
        DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
        tableModel.setColumnIdentifiers(entetes);
@@ -420,19 +430,21 @@ System.out.println("Debug");
         JLabel rangeeLabel=new JLabel("rangée");
         JLabel colLabel=new JLabel("colonne");
         JLabel typeLabel=new JLabel("Type");
-       setTitre = new JTextField();
-       setNomAuteur = new JTextField();
-       setPrenomAuteur=new JTextField();
-       setPresentation = new JTextField();
+        setTitre = new JTextField();
+        setNomAuteur = new JTextField();
+         setPrenomAuteur=new JTextField();
+        setPresentation = new JTextField();
        setParution=new JTextField();
-       setRangee=new JTextField();
+        setRangee=new JTextField();
        setcol=new JTextField();
-
-        Object[] elements = new Object[]{"Pret", "Acquis", "preter"};
+        JLabel nomPossesseur=new JLabel();
+        JTextField sNewPossesseur=new JTextField();
+        Object[] elements = new Object[]{"Emprunter", "Acquis", "Posseder"};
         typeEmprunt= new JComboBox(elements);
         Container containAjouter = new Container();
         containAjouter.setLayout(new BorderLayout());
-        containAjouter.setLayout(new GridLayout(11, 2));
+        containAjouter.setLayout(new GridLayout(13, 2));
+
         containAjouter.add(typeLabel);
         containAjouter.add(typeEmprunt);
         containAjouter.add(Titre);
@@ -452,6 +464,8 @@ System.out.println("Debug");
         containAjouter.add(imgLabel);
         setUrlImg=new JTextField();
         containAjouter.add(setUrlImg);
+        containAjouter.add(nomPossesseur);
+        containAjouter.add(sNewPossesseur);
         containAjouter.add(Confirmer,BorderLayout.WEST);
         Details.getContentPane().add(containAjouter);
         Details.setVisible(true);
@@ -497,8 +511,23 @@ System.out.println("Debug");
                 scolonne.setText((String) tableau.getValueAt(row, 5));
                 sUrl.setText((String) tableau.getValueAt(row, 6));
 
+                if(tableau.getValueAt(row, 7).equals("Emprunter")){
+                    typeEmprunt.setSelectedIndex(0);
+                    isEmprunt.setSelected(true);
+                    sPossesseur.setText((String) tableau.getValueAt(row, 8));
 
-                typeEmprunt.setSelectedIndex(parseInt((String) tableau.getValueAt(row, 7)));
+                }
+                else if(tableau.getValueAt(row, 7).equals("Posseder")){
+                    typeEmprunt.setSelectedIndex(1);
+                    isEmprunt.setSelected(false);
+
+
+                }else{
+                    typeEmprunt.setSelectedIndex(2);
+                    isEmprunt.setSelected(false);
+                }
+
+
                 SwingUtilities.updateComponentTreeUI(mainWindow);
 
 
@@ -510,17 +539,13 @@ System.out.println("Debug");
     }
     public List<String> modifyView(){
         String modify;
+
         modify= slivre.getText() + "," + sauteurnom.getText() +"," + spresentation.getText() +","+ sparution.getText();
-        modify += "," + srangee.getText() + "," + scolonne.getText() + "," +sUrl.getText();
+        modify += "," + srangee.getText() + "," + scolonne.getText() + "," +sUrl.getText()+ "," + typeEmprunt.getSelectedIndex();
         List<String> myList = new ArrayList<String>(Arrays.asList(modify.split(",")));
+
         return myList;
-        /*
-        sauteurnom.setText((String) tableau.getValueAt(row, 1));
-        spresentation.setText((String) tableau.getValueAt(row, 2));
-        sparution.setText((String) tableau.getValueAt(row, 3));
-        srangee.setText((String) tableau.getValueAt(row, 4));
-        scolonne.setText((String) tableau.getValueAt(row, 5));
-        sUrl.setText((String) tableau.getValueAt(row, 6));*/
+
     }
 
 
