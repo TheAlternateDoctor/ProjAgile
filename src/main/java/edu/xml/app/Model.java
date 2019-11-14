@@ -35,8 +35,6 @@ public class Model {
     private Bibliotheque bibliotheque;
 
     public Model() {
-        readFile("./Biblio_1.xml");
-        new ModelWord(bibliotheque, "test.txt");
     }
 
     public void exportTo(String filepath){
