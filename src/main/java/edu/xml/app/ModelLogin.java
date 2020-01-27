@@ -16,6 +16,7 @@ public class ModelLogin {
     User lastTry;
     String username;
     int level;
+    boolean triedOnce = false;
 
     public ModelLogin() {
         try {
@@ -24,7 +25,6 @@ public class ModelLogin {
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             userDB = (Users) unmarshaller.unmarshal(userFile);
             users = userDB.getUser();
-            lastTry = new User();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,19 +33,29 @@ public class ModelLogin {
     public boolean connect(String username, String password) {
         try {
             Thread.sleep(2000);
-            if (!lastTry.getName().equals(username)) {
+            if(triedOnce == true){
+                if(!lastTry.getName().equals(username)) {
+                    for (User user : users) {
+                        if (user.getName().equals(username)) {
+                            lastTry = user;
+                            triedOnce = true;
+                        }
+                    }
+                }
+                if (lastTry.getPassword().equals(password)) {
+                    username = lastTry.getName();
+                    level = lastTry.getLevel();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            else{
                 for (User user : users) {
                     if (user.getName().equals(username)) {
                         lastTry = user;
                     }
                 }
-            }
-            if (lastTry.getPassword().equals(password)) {
-                username = lastTry.getName();
-                level = lastTry.getLevel();
-                return true;
-            } else {
-                return false;
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
