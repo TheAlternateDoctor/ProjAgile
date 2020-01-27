@@ -3,6 +3,8 @@ package edu.xml.app.Views;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddsView extends JFrame {
     private JPanel panForm;
@@ -49,9 +51,9 @@ public class AddsView extends JFrame {
 
 
     public AddsView(){
-               this.setSize(720,496);
-               this.initComponent();
-               this.setVisible(true);
+        this.setSize(720,496);
+        this.initComponent();
+        this.setVisible(true);
 
     }
     private void initComponent(){
@@ -77,17 +79,17 @@ public class AddsView extends JFrame {
         sHolder=new JTextField();
         isBorrowBox=new JCheckBox();
         statusBoxValue = new Object[]{"Emprunter", "Acquis", "Posseder"};
-         statusBox= new JComboBox(statusBoxValue);
-         sBook = new JTextField();
-         sRelease = new JTextField();
+        statusBox= new JComboBox(statusBoxValue);
+        sBook = new JTextField();
+        sRelease = new JTextField();
         sAuthorName = new JTextField();
-         sAuthorFirstName = new JTextField();
+        sAuthorFirstName = new JTextField();
 
-         spresentation = new JTextArea(3, 3);
-         scol = new JTextField();
-         sLine = new JTextField();
-         sImage=new JTextField();
-         apply = new JButton("Ajouter");
+        spresentation = new JTextArea(3, 3);
+        scol = new JTextField();
+        sLine = new JTextField();
+        sImage=new JTextField();
+        apply = new JButton("Ajouter");
 
         Border border = BorderFactory.createLineBorder(Color.BLACK);
 
@@ -129,19 +131,7 @@ public class AddsView extends JFrame {
         colBox.setPreferredSize(new Dimension(100, 25));
         colBox.add(colLabel);
         colBox.add(scol);
-
-
-
-
         Box haut = Box.createVerticalBox();
-
-
-
-
-
-
-
-
         haut.add(holderLabel);
         haut.add(sHolder);
         haut.add(isBorrowLabel);
@@ -160,7 +150,21 @@ public class AddsView extends JFrame {
         haut.add(apply);
         panForm.add(haut);
         this.getContentPane().add(panForm);
+        statusBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(String.valueOf(statusBox.getSelectedItem()) =="Emprunter"){
+                    sHolder.setEditable(false);
+                }
+            }
+        });
+
+
+
+
     }
+
+
 
 
 }

@@ -45,28 +45,55 @@ public class Controller {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
-                        List<String> Addlivres = new ArrayList<>();
+                        int col=Integer.parseInt(adsBook.getScol().getText());
+                        int row=Integer.parseInt(adsBook.getsLine().getText());
 
-                        Addlivres.add(adsBook.getsBook().getText());
-                        Addlivres.add(adsBook.getsAuthorName().getText());
-                        Addlivres.add(adsBook.getsAuthorFirstName().getText());
-                        Addlivres.add(adsBook.getSpresentation().getText());
-                        Addlivres.add(adsBook.getsRelease().getText());
-                        Addlivres.add(adsBook.getsLine().getText());
-                        Addlivres.add(adsBook.getScol().getText());
-                        Addlivres.add(adsBook.getsImage().getText());
-                        Addlivres.add(String.valueOf(adsBook.getStatusBox().getSelectedItem()));
-                        Addlivres.add(adsBook.getsHolder().getText());
-                        System.out.println(Addlivres);
-                        model.addLivre(Addlivres);
-                        String[] donnees = {
-                            adsBook.getsBook().getText(),
-                            adsBook.getsAuthorName().getText()+ " "+adsBook.getsAuthorFirstName().getText(),
-                            adsBook.getSpresentation().getText(),
-                            adsBook.getsRelease().getText(),adsBook.getsLine().getText(),adsBook.getScol().getText(),
-                            adsBook.getsImage().getText(),String.valueOf(adsBook.getStatusBox().getSelectedItem()),adsBook.getsHolder().getText()};
-                        mainview.addTable(donnees);
-                        adsBook.dispose();
+                        if(row > 5) {
+                            System.out.println("Erreur la ligne rentrée est trop grande");
+                        }
+                        else if(col >5 ){
+                                System.out.println("Erreur la ligne rentrée est trop grande");
+                            }
+                        else{
+
+                            if(adsBook.getsBook().getText() != ""){
+                                if(adsBook.getsRelease().getText() !=""){
+                                    if(adsBook.getsAuthorName().getText() != ""){
+                                        if(adsBook.getsAuthorName().getText() != ""){
+                                            List<String> Addlivres = new ArrayList<>();
+
+                                            Addlivres.add(adsBook.getsBook().getText());
+                                            Addlivres.add(adsBook.getsAuthorName().getText());
+                                            Addlivres.add(adsBook.getsAuthorFirstName().getText());
+                                            Addlivres.add(adsBook.getSpresentation().getText());
+                                            Addlivres.add(adsBook.getsRelease().getText());
+                                            Addlivres.add(adsBook.getsLine().getText());
+                                            Addlivres.add(adsBook.getScol().getText());
+                                            Addlivres.add(adsBook.getsImage().getText());
+                                            Addlivres.add(String.valueOf(adsBook.getStatusBox().getSelectedItem()));
+                                            Addlivres.add(adsBook.getsHolder().getText());
+                                            System.out.println(Addlivres);
+                                            model.addLivre(Addlivres);
+                                            String[] donnees = {
+                                                adsBook.getsBook().getText(),
+                                                adsBook.getsAuthorName().getText()+ " "+adsBook.getsAuthorFirstName().getText(),
+                                                adsBook.getSpresentation().getText(),
+                                                adsBook.getsRelease().getText(),adsBook.getsLine().getText(),adsBook.getScol().getText(),
+                                                adsBook.getsImage().getText(),String.valueOf(adsBook.getStatusBox().getSelectedItem()),adsBook.getsHolder().getText()};
+                                            mainview.addTable(donnees);
+                                            adsBook.dispose();
+
+                                        }
+                                        }
+                                    }
+                                }
+                            }
+
+
+
+
+
+
                     }
                 });
             }
@@ -92,12 +119,8 @@ public class Controller {
                 model.exportTo(mainview.OpenfileButton());
             }
         });
-        mainview.getSaveAs().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                model.saveFile(mainview.OpenfileButton());
-            }
-        });
+
+
     }
 
 
