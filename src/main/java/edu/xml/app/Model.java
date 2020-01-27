@@ -28,10 +28,12 @@ public class Model {
     private Bibliotheque bibliotheque;
     private int userLevel;
     private Logger logger;
+    private ModelLogin modelLogin;
     private String username;
     private int level;
 
     public Model() {
+        logger = LogManager.getLogManager().getLogger("");
         modelLogin = new ModelLogin();
     }
 
@@ -52,6 +54,10 @@ public class Model {
 
     public String getUsername() {
         return new String(username);
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     public void readFile(String filepath) {
@@ -146,62 +152,71 @@ public class Model {
         return convertedLivre;
     }
 
-    public void addLivre(List<String> livre) {
-        Livre newLivre = new Livre();
-        Auteur newAuteur = new Auteur();
-        newLivre.setTitre(livre.get(0));
-        newAuteur.setNom(livre.get(1));
-        newAuteur.setPrenom(livre.get(2));
-        newLivre.setAuteur(newAuteur);
-        newLivre.setPresentation(livre.get(3));
-        newLivre.setParution(Integer.parseInt(livre.get(4)));
-        newLivre.setColonne(Short.parseShort(livre.get(6)));
-        newLivre.setRangee(Short.parseShort((livre.get(5))));
-        newLivre.setImgUrl(livre.get(7));
-        if (livre.get(8).equals("Emprunter")) {
-            newLivre.setPret(true);
-        } else {
-            newLivre.setPret(false);
-        }
+    public boolean addLivre(List<String> livre) {
+        if (level == -1) {
+            Livre newLivre = new Livre();
+            Auteur newAuteur = new Auteur();
+            newLivre.setTitre(livre.get(0));
+            newAuteur.setNom(livre.get(1));
+            newAuteur.setPrenom(livre.get(2));
+            newLivre.setAuteur(newAuteur);
+            newLivre.setPresentation(livre.get(3));
+            newLivre.setParution(Integer.parseInt(livre.get(4)));
+            newLivre.setColonne(Short.parseShort(livre.get(6)));
+            newLivre.setRangee(Short.parseShort((livre.get(5))));
+            newLivre.setImgUrl(livre.get(7));
+            if (livre.get(8).equals("Emprunter")) {
+                newLivre.setPret(true);
+            } else {
+                newLivre.setPret(false);
+            }
 
-        newLivre.setAcquis(livre.get(8));
+            newLivre.setAcquis(livre.get(8));
 
-        newLivre.setNomAcquis(livre.get(9));
+            newLivre.setNomAcquis(livre.get(9));
 
-        newLivre.setNomAcquis(livre.get(9));
-        newLivre.setImgUrl(livre.get(8));
+            newLivre.setNomAcquis(livre.get(9));
+            newLivre.setImgUrl(livre.get(8));
 
-        livres.add(newLivre);
-
+            livres.add(newLivre);
+            return true;
+        } else
+            return false;
     }
 
-    public void modifyLivre(int index, List<String> livre) {
+    public boolean modifyLivre(int index, List<String> livre) {
+        if (level == -1) {
+            Livre newLivre = new Livre();
+            Auteur newAuteur = new Auteur();
+            newLivre.setTitre(livre.get(0));
 
-        Livre newLivre = new Livre();
-        Auteur newAuteur = new Auteur();
-        newLivre.setTitre(livre.get(0));
+            newAuteur.setNom(livre.get(1));
+            newAuteur.setPrenom(" ");
+            newLivre.setAuteur(newAuteur);
 
-        newAuteur.setNom(livre.get(1));
-        newAuteur.setPrenom(" ");
-        newLivre.setAuteur(newAuteur);
+            newLivre.setPresentation(livre.get(2));
 
-        newLivre.setPresentation(livre.get(2));
+            newLivre.setParution(Integer.parseInt(livre.get(3)));
 
-        newLivre.setParution(Integer.parseInt(livre.get(3)));
+            newLivre.setColonne(Short.parseShort(livre.get(4)));
+            newLivre.setRangee(Short.parseShort(livre.get(5)));
+            newLivre.setImgUrl(livre.get(6));
+            newLivre.setNomAcquis(livre.get(7));
 
-        newLivre.setColonne(Short.parseShort(livre.get(4)));
-        newLivre.setRangee(Short.parseShort(livre.get(5)));
-        newLivre.setImgUrl(livre.get(6));
-        newLivre.setNomAcquis(livre.get(7));
+            newLivre.setAcquis(" ");
 
-        newLivre.setAcquis(" ");
-
-        livres.set(index, newLivre);
+            livres.set(index, newLivre);
+            return true;
+        } else
+            return false;
     }
 
-    public void removeLivre(int index) {
-
-        livres.remove(livres.get(index));
+    public boolean removeLivre(int index) {
+        if (level == -1) {
+            livres.remove(livres.get(index));
+            return true;
+        } else
+            return false;
     }
 
 }
