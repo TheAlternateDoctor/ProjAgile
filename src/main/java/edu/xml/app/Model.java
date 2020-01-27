@@ -44,7 +44,7 @@ public class Model {
 
     public boolean logIn(String username, String password) {
         if (modelLogin.connect(username, password)) {
-            userlevel = modelLogin.getLevel();
+            userLevel = modelLogin.getLevel();
             username = modelLogin.getUsername();
             return true;
         } else
@@ -152,7 +152,7 @@ public class Model {
     }
 
     public boolean addLivre(List<String> livre) {
-        if (level == -1) {
+        if (userLevel == -1) {
             Livre newLivre = new Livre();
             Auteur newAuteur = new Auteur();
             newLivre.setTitre(livre.get(0));
@@ -184,7 +184,7 @@ public class Model {
     }
 
     public boolean modifyLivre(int index, List<String> livre) {
-        if (level == -1) {
+        if (userLevel == -1) {
             Livre newLivre = new Livre();
             Auteur newAuteur = new Auteur();
             newLivre.setTitre(livre.get(0));
@@ -211,7 +211,7 @@ public class Model {
     }
 
     public boolean removeLivre(int index) {
-        if (level == -1) {
+        if (userLevel == -1) {
             livres.remove(livres.get(index));
             return true;
         } else
