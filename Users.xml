@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- Levels: 
+    -1 - Admin, every right 
+    0 - Unregistered 
+    1 - Registered-->
+<users>
+    <user>
+        <name>Admin</name>
+        <password>Admin</password>
+        <level>-1</level>
+    </user>
+    <user>
+        <name>Test</name>
+        <password>test1234</password>
+        <level>1</level>
+    </user>
+</users>

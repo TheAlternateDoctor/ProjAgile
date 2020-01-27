@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.11.07 à 04:22:54 PM CET 
+// Généré le : 2020.01.27 à 02:11:45 PM CET 
 //
 
 
@@ -45,11 +45,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Users }
+     * 
+     */
+    public Users createUsers() {
+        return new Users();
+    }
+
+    /**
      * Create an instance of {@link Bibliotheque.Livre }
      * 
      */
     public Bibliotheque.Livre createBibliothequeLivre() {
         return new Bibliotheque.Livre();
+    }
+
+    /**
+     * Create an instance of {@link Users.User }
+     * 
+     */
+    public Users.User createUsersUser() {
+        return new Users.User();
     }
 
     /**
