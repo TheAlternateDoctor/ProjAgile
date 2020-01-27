@@ -156,6 +156,9 @@ public class AddsView extends JFrame {
                 if(String.valueOf(statusBox.getSelectedItem()) =="Emprunter"){
                     sHolder.setEditable(false);
                 }
+                else{
+                    sHolder.setEditable(true);
+                }
             }
         });
 

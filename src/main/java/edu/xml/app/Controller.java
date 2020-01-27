@@ -1,8 +1,10 @@
 package edu.xml.app;
 
 import edu.xml.app.Views.AddsView;
+import edu.xml.app.Views.Connexion;
 import edu.xml.app.Views.MainView;
 
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +14,13 @@ public class Controller {
 
     private Model model;
     private MainView mainview;
+
     AddsView adsBook;
 
-    public Controller() {
 
+    public Controller(){
+        this.model=new Model();
         this.mainview=new MainView();
-        this.model = new Model();
-
-
-    }
-
-    public void control(){
 
         mainview.getOpenFile().addActionListener(new ActionListener() {
             @Override
@@ -88,12 +86,6 @@ public class Controller {
                                     }
                                 }
                             }
-
-
-
-
-
-
                     }
                 });
             }

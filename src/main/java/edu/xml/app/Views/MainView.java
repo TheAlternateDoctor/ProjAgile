@@ -22,12 +22,12 @@ public class MainView  extends JFrame {
     private JTable tableau;
 
     private Connexion connexionPage;
+    public Connexion getConnexionPage(){return connexionPage;}
 
 
     private int count;
     //Champs formulaire d'édition
 
-    private JCheckBox isBorrowBox;
     private JComboBox statusBox;
     private Object[] statusBoxValue;
     private JTextField sBook,sRelease,sAuthorName,sAuthorFirstName,scol,sLine,sImage,sHolder;
@@ -57,9 +57,6 @@ public class MainView  extends JFrame {
 
     public JMenuItem getSaveAs() {  return saveAs;  }
 
-    public Connexion getConnexionPage() {
-        return connexionPage;
-    }
 
     public JMenuItem getConnexion() { return connexion;}
     public void initEditForm(){
@@ -69,7 +66,6 @@ public class MainView  extends JFrame {
         panForm.setBorder((BorderFactory.createTitledBorder("Formulaire d'interaction")));
         // Label formulaire d'édition
         JLabel holderLabel=new JLabel("Possesseur:");
-        JLabel isBorrowLabel=new JLabel("Emprunter");
         JLabel statusLabel=new JLabel("Status:");
         JLabel bookLabel = new JLabel("Titre : ");
         JLabel authorNameLabel = new JLabel("Nom ");
@@ -82,7 +78,7 @@ public class MainView  extends JFrame {
         //Champs formulaire d'édition
 
         sHolder=new JTextField();
-        isBorrowBox=new JCheckBox();
+
         statusBoxValue = new Object[]{"Emprunter", "Acquis", "Posseder"};
         statusBox= new JComboBox(statusBoxValue);
         sBook = new JTextField();
@@ -136,12 +132,7 @@ public class MainView  extends JFrame {
         colBox.setPreferredSize(new Dimension(100, 25));
         colBox.add(colLabel);
         colBox.add(scol);
-
-
-
-
         Box haut = Box.createVerticalBox();
-
         haut.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
@@ -151,8 +142,6 @@ public class MainView  extends JFrame {
 
         haut.add(holderLabel);
         haut.add(sHolder);
-        haut.add(isBorrowLabel);
-        haut.add(isBorrowBox);
         haut.add(statusLabel);
         haut.add(statusBox);
         haut.add(bookBox);
@@ -171,7 +160,7 @@ public class MainView  extends JFrame {
     public MainView() throws HeadlessException{
         this.setSize(1366,900);//768
         this.initComponent();
-        this.initEditForm();
+
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -299,21 +288,17 @@ public class MainView  extends JFrame {
                 scol.setText((String) tableau.getValueAt(row, 5));
                 sImage.setText((String) tableau.getValueAt(row, 6));
 
-                if(tableau.getValueAt(row, 7).equals("Emprunter")){
-                    statusBox.setSelectedIndex(0);
-                    isBorrowBox.setSelected(true);
-                    sHolder.setText((String) tableau.getValueAt(row, 8));
-
-                }
-                else if(tableau.getValueAt(row, 7).equals("Posseder")){
-                    statusBox.setSelectedIndex(1);
-                    isBorrowBox.setSelected(false);
-
-
-                }else{
-                    statusBox.setSelectedIndex(2);
-                    isBorrowBox.setSelected(false);
-                }
+                statusBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(String.valueOf(statusBox.getSelectedItem()) =="Emprunter"){
+                            sHolder.setEditable(false);
+                        }
+                        else{
+                            sHolder.setEditable(true);
+                        }
+                    }
+                });
                printImage(sImage.getText());
             }
 
@@ -357,8 +342,11 @@ public class MainView  extends JFrame {
         return tableau.getSelectedRow();
     }
 
+    public void connexionPage(){
+        connexionPage=new Connexion();
 
 
+    }
 
 }
 

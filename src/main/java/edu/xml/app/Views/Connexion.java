@@ -1,4 +1,8 @@
 package edu.xml.app.Views;
+import edu.xml.app.Model;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
@@ -7,21 +11,27 @@ public class Connexion  extends JFrame {
 
     private JLabel user,password;
     private JTextField userField;
-    private JPasswordField passwordField;
+    private JTextField passwordField;
     private Container container;
     private JButton submit;
 
-    String userConnect[] = new String[2];
-    private int i= 0;
+
+    public JTextField getUserField() {
+        return userField;
+    }
+
+    public JTextField getPasswordField() {
+        return passwordField;
+    }
 
     public JButton getSubmit() {return submit;}
 
-    Connexion(){
+    public Connexion(){
 
         user=new JLabel("<html><div style='text-align:center;margin-left:40%;'>utilisateur</div></html>");
         password=new JLabel("<html><div style='text-align:center;margin-left:40%;'>Mot de passe</div></html>");
         userField=new JTextField();
-        passwordField=new JPasswordField();
+        passwordField=new JTextField();
         container=new Container();
         submit=new JButton("Se connecter ");
         container.add(user);
@@ -37,7 +47,11 @@ public class Connexion  extends JFrame {
 
 
 
-}
+
+    }
+
+
+
 
 
 
