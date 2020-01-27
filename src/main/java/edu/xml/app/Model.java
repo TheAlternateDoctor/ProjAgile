@@ -26,11 +26,10 @@ public class Model {
     private String filepath;
     private String filename;
     private Bibliotheque bibliotheque;
-    private int userLevel;
     private Logger logger;
     private ModelLogin modelLogin;
     private String username;
-    private int level;
+    private int userLevel;
 
     public Model() {
         logger = LogManager.getLogManager().getLogger("");
@@ -45,7 +44,7 @@ public class Model {
 
     public boolean logIn(String username, String password) {
         if (modelLogin.connect(username, password)) {
-            level = modelLogin.getLevel();
+            userlevel = modelLogin.getLevel();
             username = modelLogin.getUsername();
             return true;
         } else
@@ -57,7 +56,7 @@ public class Model {
     }
 
     public int getLevel() {
-        return level;
+        return userLevel;
     }
 
     public void readFile(String filepath) {
