@@ -9,11 +9,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 public class Model {
 
@@ -32,7 +34,8 @@ public class Model {
     private int userLevel;
 
     public Model() {
-        logger = LogManager.getLogManager().getLogger("");
+        logger = LogManager.getLogger();
+        userLevel = -1;
         modelLogin = new ModelLogin();
     }
 
@@ -44,7 +47,7 @@ public class Model {
 
     public boolean logIn(String username, String password) {
         if (modelLogin.connect(username, password)) {
-            userlevel = modelLogin.getLevel();
+            userLevel = modelLogin.getLevel();
             username = modelLogin.getUsername();
             return true;
         } else
@@ -152,7 +155,7 @@ public class Model {
     }
 
     public boolean addLivre(List<String> livre) {
-        if (level == -1) {
+        if (userLevel == -1) {
             Livre newLivre = new Livre();
             Auteur newAuteur = new Auteur();
             newLivre.setTitre(livre.get(0));
@@ -178,13 +181,15 @@ public class Model {
             newLivre.setImgUrl(livre.get(8));
 
             livres.add(newLivre);
+            logger.debug("Modified " + newLivre.getTitre() + " by " + newLivre.getAuteur().getPrenom() + " "
+                    + newLivre.getAuteur().getNom());
             return true;
         } else
             return false;
     }
 
     public boolean modifyLivre(int index, List<String> livre) {
-        if (level == -1) {
+        if (userLevel == -1) {
             Livre newLivre = new Livre();
             Auteur newAuteur = new Auteur();
             newLivre.setTitre(livre.get(0));
@@ -205,14 +210,19 @@ public class Model {
             newLivre.setAcquis(" ");
 
             livres.set(index, newLivre);
+            logger.debug("Modified " + newLivre.getTitre() + " by " + newLivre.getAuteur().getPrenom() + " "
+                    + newLivre.getAuteur().getNom());
             return true;
         } else
             return false;
     }
 
     public boolean removeLivre(int index) {
-        if (level == -1) {
-            livres.remove(livres.get(index));
+        if (userLevel == -1) {
+            Livre livre = livres.get(index);
+            livres.remove(livre);
+            logger.debug("Removed " + livre.getTitre() + " by " + livre.getAuteur().getPrenom() + " "
+                    + livre.getAuteur().getNom());
             return true;
         } else
             return false;
