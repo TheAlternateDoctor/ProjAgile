@@ -54,6 +54,7 @@ public class ModelLogin {
                 for (User user : users) {
                     if (user.getName().equals(username)) {
                         lastTry = user;
+                        triedOnce = true;
                     }
                 }
             }
