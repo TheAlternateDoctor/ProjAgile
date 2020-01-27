@@ -24,6 +24,7 @@ public class ModelLogin {
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             userDB = (Users) unmarshaller.unmarshal(userFile);
             users = userDB.getUser();
+            lastTry = new User();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,6 +51,13 @@ public class ModelLogin {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void createUser(String username, String password, int level) {
+        User user = new User();
+        user.setLevel((byte) level);
+        user.setName(username);
+        user.setPassword(password);
     }
 
     public int getLevel() {
