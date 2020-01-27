@@ -6,20 +6,25 @@ import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import edu.xml.app.Views.Connexion;
 
 public class MainView  extends JFrame {
     private JMenuBar navbar;
     private JMenu file,edit,about;
-    private JMenuItem newFile,openFile,exportToDocx,quit,save,saveAs,whoAreWe;
+    private JMenuItem newFile,openFile,exportToDocx,quit,save,saveAs,whoAreWe,connexion;
     private Container mainContainer,containerButton;
     private JPanel panForm, panButton;
     private JButton adds,delete;
     private JTable tableau;
-    private static int count;
 
+    private Connexion connexionPage;
+
+
+    private int count;
     //Champs formulaire d'édition
 
     private JCheckBox isBorrowBox;
@@ -52,6 +57,11 @@ public class MainView  extends JFrame {
 
     public JMenuItem getSaveAs() {  return saveAs;  }
 
+    public Connexion getConnexionPage() {
+        return connexionPage;
+    }
+
+    public JMenuItem getConnexion() { return connexion;}
     public void initEditForm(){
         panForm=new JPanel();
         panForm.setPreferredSize(new Dimension(300, 400));
@@ -87,6 +97,8 @@ public class MainView  extends JFrame {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
 
         spresentation.setBorder(border);
+
+
 
 
 
@@ -173,11 +185,15 @@ public class MainView  extends JFrame {
         newFile=new JMenuItem("Nouveau");
         openFile=new JMenuItem("Ouvrir");
         exportToDocx=new JMenuItem("Export");
+        connexion=new JMenuItem("Connexion");
+
         quit=new JMenuItem("quitter");
         file.add(newFile);
         file.add(openFile);
         file.add(exportToDocx);
+        file.add(connexion);
         file.add(quit);
+
         // JMenu 2
         edit=new JMenu("Edit");
         save=new JMenuItem("sauvegarder");
@@ -204,7 +220,6 @@ public class MainView  extends JFrame {
         panButton.setSize(1366,350);
         panButton.add(adds, BorderLayout.CENTER);
         panButton.add(delete, BorderLayout.CENTER);
-
         this.getContentPane().add(mainContainer,BorderLayout.CENTER);
         this.getContentPane().add(panButton,BorderLayout.SOUTH);
         tableau=new JTable();
@@ -303,14 +318,8 @@ public class MainView  extends JFrame {
             }
 
         });
-
-
-
-
-
-
-
     }
+
     public void printImage(String path){
 
         if(count>0){
@@ -350,4 +359,7 @@ public class MainView  extends JFrame {
 
 
 
+
 }
+
+
