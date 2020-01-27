@@ -1,4 +1,5 @@
 package edu.xml.app;
+
 import edu.xml.helpers.Bibliotheque;
 import edu.xml.helpers.Bibliotheque.Livre;
 import edu.xml.helpers.Bibliotheque.Livre.Auteur;
@@ -11,36 +12,46 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class Model {
 
-/*
-    Index:
-    Titre
-    Nom
-    Prenom
-    Présentation
-    Parution
-    Colonne
-    Rangee
-    Pret
-    Acquis
-    Nom Acquis
-    Img_Url
-*/
+    /*
+     * Index: Titre Nom Prenom Présentation Parution Colonne Rangee Pret Acquis Nom
+     * Acquis Img_Url
+     */
 
     private List<Livre> livres;
     private String filepath;
     private String filename;
     private Bibliotheque bibliotheque;
+    private int userLevel;
+    private Logger logger;
+    private String username;
+    private int level;
 
     public Model() {
+        modelLogin = new ModelLogin();
     }
 
-    public void exportTo(String filepath){
-        ModelWord model = new ModelWord(bibliotheque,filename);
+    public void exportTo(String filepath) {
+        ModelWord model = new ModelWord(bibliotheque, filename);
         model.buildModel();
         model.exportModel(filepath);
+    }
+
+    public boolean logIn(String username, String password) {
+        if (modelLogin.connect(username, password)) {
+            level = modelLogin.getLevel();
+            username = modelLogin.getUsername();
+            return true;
+        } else
+            return false;
+    }
+
+    public String getUsername() {
+        return new String(username);
     }
 
     public void readFile(String filepath) {
@@ -81,7 +92,6 @@ public class Model {
         }
     }
 
-
     public boolean saveFile(String filepath) {
         JAXBContext jaxbContext;
         try {
@@ -101,7 +111,7 @@ public class Model {
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
             convertedLivres[i][0] = livre.getTitre();
-            convertedLivres[i][1] = livre.getAuteur().getNom() + " " + livre.getAuteur().getPrenom()  ;
+            convertedLivres[i][1] = livre.getAuteur().getNom() + " " + livre.getAuteur().getPrenom();
             convertedLivres[i][2] = livre.getPresentation();
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
@@ -111,11 +121,9 @@ public class Model {
             convertedLivres[i][7] = livre.getAcquis();
             convertedLivres[i][8] = livre.getNomAcquis();
 
-
             convertedLivres[i][6] = livre.getAcquis();
             convertedLivres[i][7] = livre.getNomAcquis();
             convertedLivres[i][8] = livre.getImgUrl();
-
 
         }
         return convertedLivres;
@@ -150,25 +158,22 @@ public class Model {
         newLivre.setColonne(Short.parseShort(livre.get(6)));
         newLivre.setRangee(Short.parseShort((livre.get(5))));
         newLivre.setImgUrl(livre.get(7));
-        if(livre.get(8).equals("Emprunter")){
+        if (livre.get(8).equals("Emprunter")) {
             newLivre.setPret(true);
-        }
-        else{
+        } else {
             newLivre.setPret(false);
         }
 
         newLivre.setAcquis(livre.get(8));
 
-
         newLivre.setNomAcquis(livre.get(9));
-
 
         newLivre.setNomAcquis(livre.get(9));
         newLivre.setImgUrl(livre.get(8));
 
         livres.add(newLivre);
-    }
 
+    }
 
     public void modifyLivre(int index, List<String> livre) {
 
@@ -198,4 +203,5 @@ public class Model {
 
         livres.remove(livres.get(index));
     }
+
 }
