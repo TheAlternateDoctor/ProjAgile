@@ -28,15 +28,11 @@ public class Model {
     private String filepath;
     private String filename;
     private Bibliotheque bibliotheque;
-    private Logger logger;
-    private ModelLogin modelLogin;
+    private Logger logger = LogManager.getLogger();
     private String username;
-    private int userLevel;
+    private int userLevel = 0;
 
     public Model() {
-        logger = LogManager.getLogger();
-        userLevel = -1;
-        modelLogin = new ModelLogin();
     }
 
     public void exportTo(String filepath) {
@@ -46,6 +42,7 @@ public class Model {
     }
 
     public boolean logIn(String username, String password) {
+        ModelLogin modelLogin = new ModelLogin();
         if (modelLogin.connect(username, password)) {
             userLevel = modelLogin.getLevel();
             username = modelLogin.getUsername();
@@ -76,9 +73,13 @@ public class Model {
 
                 livres = bibliotheque.getLivre();
             } else {
-                ObjectFactory objFactory = new ObjectFactory();
-                bibliotheque = (Bibliotheque) objFactory.createBibliotheque();
-                livres = bibliotheque.getLivre();
+                /*
+                 * ObjectFactory objFactory = new ObjectFactory(); bibliotheque = (Bibliotheque)
+                 * objFactory.createBibliotheque(); livres = bibliotheque.getLivre();
+                 */
+                ModelDB modelDB = new ModelDB();
+                modelDB.connectDB();
+                bibliotheque = modelDB.readDB();
             }
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -119,14 +120,19 @@ public class Model {
         for (int i = 0; i < livres.size(); i++) {
             Livre livre = livres.get(i);
             convertedLivres[i][0] = livre.getTitre();
-            convertedLivres[i][1] = livre.getAuteur().getNom() + " " + livre.getAuteur().getPrenom()  ;
+            convertedLivres[i][1] = livre.getAuteur().getNom() + " " + livre.getAuteur().getPrenom();
             convertedLivres[i][2] = livre.getPresentation();
             convertedLivres[i][3] = String.valueOf(livre.getParution());
             convertedLivres[i][4] = String.valueOf(livre.getColonne());
             convertedLivres[i][5] = String.valueOf(livre.getRangee());
+
             convertedLivres[i][6] = livre.getImgUrl();
             convertedLivres[i][7] = livre.getAcquis();
             convertedLivres[i][8] = livre.getNomAcquis();
+
+            convertedLivres[i][6] = livre.getAcquis();
+            convertedLivres[i][7] = livre.getNomAcquis();
+            convertedLivres[i][8] = livre.getImgUrl();
 
         }
         return convertedLivres;
@@ -172,7 +178,8 @@ public class Model {
 
             newLivre.setNomAcquis(livre.get(9));
 
-
+            newLivre.setNomAcquis(livre.get(9));
+            newLivre.setImgUrl(livre.get(8));
 
             livres.add(newLivre);
             logger.debug("Modified " + newLivre.getTitre() + " by " + newLivre.getAuteur().getPrenom() + " "
@@ -199,8 +206,9 @@ public class Model {
             newLivre.setColonne(Short.parseShort(livre.get(4)));
             newLivre.setRangee(Short.parseShort(livre.get(5)));
             newLivre.setImgUrl(livre.get(6));
-            newLivre.setAcquis(" ");
+            newLivre.setNomAcquis(livre.get(7));
 
+            newLivre.setAcquis(" ");
 
             livres.set(index, newLivre);
             logger.debug("Modified " + newLivre.getTitre() + " by " + newLivre.getAuteur().getPrenom() + " "
