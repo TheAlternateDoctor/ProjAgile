@@ -100,7 +100,12 @@ public class Controller {
                                                 adsBook.getsRelease().getText(),adsBook.getsLine().getText(),adsBook.getScol().getText(),
                                                 adsBook.getsImage().getText(),String.valueOf(adsBook.getStatusBox().getSelectedItem()),adsBook.getsHolder().getText()};
                                                 mainview.addTable(donnees);
-                                                adsBook.dispose();
+                                                adsBook.getApply().addActionListener(new ActionListener() {
+                                                    @Override
+                                                    public void actionPerformed(ActionEvent e) {
+                                                        adsBook.exit();
+                                                    }
+                                                });
 
                                         }
                                         }
@@ -126,6 +131,7 @@ public class Controller {
                 mainview.removeTable(mainview.supprimer());
             }
         });
+
         mainview.getExportToDocx().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,9 +139,18 @@ public class Controller {
             }
         });
 
+        mainview.getApply().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.modifyLivre(mainview.getTableau().getSelectedRow(),mainview.modifyView());
+
+            }
+        });
+    }
+
 
     }
 
 
 
-}
+
