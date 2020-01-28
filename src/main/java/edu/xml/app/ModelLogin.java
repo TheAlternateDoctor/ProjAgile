@@ -33,8 +33,8 @@ public class ModelLogin {
     public boolean connect(String username, String password) {
         try {
             Thread.sleep(2000);
-            if(triedOnce == true){
-                if(!lastTry.getName().equals(username)) {
+            if (triedOnce == true) {
+                if (!lastTry.getName().equals(username)) {
                     for (User user : users) {
                         if (user.getName().equals(username)) {
                             lastTry = user;
@@ -49,13 +49,19 @@ public class ModelLogin {
                 } else {
                     return false;
                 }
-            }
-            else{
+            } else {
                 for (User user : users) {
                     if (user.getName().equals(username)) {
                         lastTry = user;
                         triedOnce = true;
                     }
+                }
+                if (lastTry.getPassword().equals(password)) {
+                    username = lastTry.getName();
+                    level = lastTry.getLevel();
+                    return true;
+                } else {
+                    return false;
                 }
             }
         } catch (InterruptedException e) {
