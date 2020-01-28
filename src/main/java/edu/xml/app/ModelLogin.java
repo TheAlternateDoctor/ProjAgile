@@ -82,6 +82,6 @@ public class ModelLogin {
     }
 
     public String getUsername() {
-        return new String(username);
+        return username;
     }
 }

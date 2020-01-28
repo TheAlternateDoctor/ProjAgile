@@ -165,6 +165,14 @@ public class AddsView extends JFrame {
 
 
 
+
+
+    }
+
+    public void exit(){
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
 

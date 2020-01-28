@@ -10,24 +10,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import edu.xml.app.Views.Connexion;
 
 public class MainView  extends JFrame {
     private JMenuBar navbar;
     private JMenu file,edit,about;
-    private JMenuItem newFile,openFile,exportToDocx,quit,save,saveAs,whoAreWe,connexion;
-    private Container mainContainer,containerButton;
+    private JMenuItem newFile,openFile,exportToDocx,quit,save,saveAs,whoAreWe,connexion,database;
+    private Container mainContainer;
     private JPanel panForm, panButton;
     private JButton adds,delete;
     private JTable tableau;
 
     private Connexion connexionPage;
-    public Connexion getConnexionPage(){return connexionPage;}
 
 
     private int count;
-    //Champs formulaire d'édition
 
+    //Champs formulaire d'édition
     private JComboBox statusBox;
     private Object[] statusBoxValue;
     private JTextField sBook,sRelease,sAuthorName,sAuthorFirstName,scol,sLine,sImage,sHolder;
@@ -39,14 +42,16 @@ public class MainView  extends JFrame {
 
 
 
-        // Getters //
+    // Getters //
 
+    public JButton getApply(){return apply;}
     public JMenuItem getExportToDocx() {  return exportToDocx;  }
 
     public JMenuItem getOpenFile() {
         return openFile;
     }
 
+    public JTable getTableau(){return tableau;}
     public JMenuItem getNewFile() { return newFile;}
 
     public JButton getAdds() {return adds; }
@@ -79,7 +84,7 @@ public class MainView  extends JFrame {
 
         sHolder=new JTextField();
 
-        statusBoxValue = new Object[]{"Emprunter", "Acquis", "Posseder"};
+        statusBoxValue = new Object[]{"Acquis", "Posseder","Emprunter"};
         statusBox= new JComboBox(statusBoxValue);
         sBook = new JTextField();
         sRelease = new JTextField();
@@ -160,7 +165,7 @@ public class MainView  extends JFrame {
     public MainView() throws HeadlessException{
         this.setSize(1366,900);//768
         this.initComponent();
-
+        this.initEditForm();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -175,11 +180,13 @@ public class MainView  extends JFrame {
         openFile=new JMenuItem("Ouvrir");
         exportToDocx=new JMenuItem("Export");
         connexion=new JMenuItem("Connexion");
+        database=new JMenuItem("Se connecter à une base de donnée");
 
         quit=new JMenuItem("quitter");
         file.add(newFile);
         file.add(openFile);
         file.add(exportToDocx);
+        file.add(database);
         file.add(connexion);
         file.add(quit);
 
@@ -192,8 +199,8 @@ public class MainView  extends JFrame {
         //JMenu 3
         about=new JMenu("A propos");
         whoAreWe=new JMenuItem("qui sommes nous");
-       about.add(whoAreWe);
-       // JMenuBar
+        about.add(whoAreWe);
+        // JMenuBar
         navbar=new JMenuBar();
         navbar.add(file);
         navbar.add(edit);
@@ -234,6 +241,7 @@ public class MainView  extends JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
         tableModel.addRow(donnees);
         tableModel.fireTableDataChanged();
+        SwingUtilities.updateComponentTreeUI(this);
     }
 
     public void removeTable(int index){
@@ -299,7 +307,7 @@ public class MainView  extends JFrame {
                         }
                     }
                 });
-               printImage(sImage.getText());
+                printImage(sImage.getText());
             }
 
         });
@@ -334,20 +342,25 @@ public class MainView  extends JFrame {
 
         }
         panIMG.setSize(200,200);
-       panForm.add(panIMG,BorderLayout.SOUTH);
+        panForm.add(panIMG,BorderLayout.SOUTH);
         count++;
     }
 
     public int supprimer(){
         return tableau.getSelectedRow();
     }
-
-    public void connexionPage(){
-        connexionPage=new Connexion();
-
+    public List <String> modifyView(){
+        String modify;
+        modify= sBook.getText() + "," + sAuthorName.getText() + " "+ sAuthorFirstName.getText() + "," + spresentation.getText() +","+ sRelease.getText();
+        modify += "," + sLine.getText() + "," + scol.getText() + "," +sImage.getText();
+        List <String> myList = new ArrayList<String>(Arrays.asList(modify.split(",")));
+        return myList;
 
     }
 
+
 }
+
+
 
 
