@@ -31,7 +31,7 @@ public class Model {
     private int userLevel = 0;
     private ModelDB modelDB;
     private boolean connected = false;
-    private ModelFile modelFile;
+    private ModelFile modelFile = new ModelFile();
     private Bibliotheque bibliotheque;
     private int method;
 
@@ -44,6 +44,7 @@ public class Model {
     }
 
     public Model() {
+        
     }
     
     public void readDB(){
@@ -101,7 +102,7 @@ public class Model {
     }
     
     public String[][] getLivres() {
-        String[][] convertedLivres = new String[livres.size()][9];
+        String[][] convertedLivres = new String[livres.size()][10];
         for (int i = 0; i < livres.size(); i++) {
             Bibliotheque.Livre livre = livres.get(i);
             convertedLivres[i][0] = String.valueOf(livre.getId());

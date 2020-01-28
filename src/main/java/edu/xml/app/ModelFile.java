@@ -22,12 +22,10 @@ import javax.xml.bind.Unmarshaller;
  */
 public class ModelFile {
     
-    private int userLevel;
     private String filepath;
     private String filename;
     
-    public ModelFile(int userLevel){
-        this.userLevel = userLevel;
+    public ModelFile(){
     }
     
     public Bibliotheque readFile(String filepath) {
