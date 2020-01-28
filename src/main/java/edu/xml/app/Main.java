@@ -5,8 +5,9 @@ public class Main {
 
   public static void main(String[] args) {
 
-      Controller controller=new Controller();
-      controller.control();
+      AuthController auth= AuthController.getInstance();
+
+
 
   }
 }

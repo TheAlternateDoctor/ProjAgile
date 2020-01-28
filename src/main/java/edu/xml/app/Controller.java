@@ -1,8 +1,10 @@
 package edu.xml.app;
 
 import edu.xml.app.Views.AddsView;
+import edu.xml.app.Views.Connexion;
 import edu.xml.app.Views.MainView;
 
+import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +16,32 @@ public class Controller {
     private MainView mainview;
     AddsView adsBook;
 
-    public Controller() {
 
-        this.mainview=new MainView();
-        this.model = new Model();
-
-
+    public MainView getMainview() {
+        return mainview;
     }
 
-    public void control(){
+    public Controller(){
+        this.model=new Model();
+        this.mainview=new MainView();
+
+        AuthController authController=AuthController.getInstance();
+
+
+
+        if(authController.getAuthLevel()==true){
+            mainview.getApply().setEnabled(true);
+            mainview.getAdds().setEnabled(true);
+            mainview.getDelete().setEnabled(true);
+        }
+        else{
+            mainview.getApply().setEnabled(false);
+            mainview.getAdds().setEnabled(false);
+            mainview.getDelete().setEnabled(false);
+        }
+
+
+
 
         mainview.getOpenFile().addActionListener(new ActionListener() {
             @Override
@@ -80,20 +99,14 @@ public class Controller {
                                                 adsBook.getSpresentation().getText(),
                                                 adsBook.getsRelease().getText(),adsBook.getsLine().getText(),adsBook.getScol().getText(),
                                                 adsBook.getsImage().getText(),String.valueOf(adsBook.getStatusBox().getSelectedItem()),adsBook.getsHolder().getText()};
-                                            mainview.addTable(donnees);
-                                            adsBook.dispose();
+                                                mainview.addTable(donnees);
+                                                adsBook.dispose();
 
                                         }
                                         }
                                     }
                                 }
                             }
-
-
-
-
-
-
                     }
                 });
             }
@@ -122,6 +135,7 @@ public class Controller {
 
 
     }
+
 
 
 }
