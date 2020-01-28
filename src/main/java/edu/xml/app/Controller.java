@@ -50,6 +50,14 @@ public class Controller {
                 mainview.table(model.getLivres());
             }
         });
+        mainview.getDatabase().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.readDB();
+                mainview.table(model.getLivres());
+                //Todo - Griser les boutons sauvegarder
+            }
+        });
         mainview.getNewFile().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,7 +127,7 @@ public class Controller {
         mainview.getSave().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.saveFile();
+                model.save();
 
             }
         });
@@ -135,7 +143,7 @@ public class Controller {
         mainview.getExportToDocx().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.exportTo(mainview.OpenfileButton());
+                    model.exportFile(mainview.OpenfileButton());
             }
         });
 
@@ -146,6 +154,7 @@ public class Controller {
 
             }
         });
+        
     }
 
 

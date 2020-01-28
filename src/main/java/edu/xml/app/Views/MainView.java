@@ -64,6 +64,8 @@ public class MainView  extends JFrame {
 
 
     public JMenuItem getConnexion() { return connexion;}
+    
+    public JMenuItem getDatabase() { return database;}
     public void initEditForm(){
         panForm=new JPanel();
         panForm.setPreferredSize(new Dimension(300, 400));
