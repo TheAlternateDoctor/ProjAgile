@@ -27,7 +27,8 @@ public class MainView  extends JFrame {
 
     private Connexion connexionPage;
 
-
+    private String[][] donnees;
+    private int idLivre;
     private int count;
 
     //Champs formulaire d'édition
@@ -64,7 +65,7 @@ public class MainView  extends JFrame {
 
 
     public JMenuItem getConnexion() { return connexion;}
-    
+
     public JMenuItem getDatabase() { return database;}
     public void initEditForm(){
         panForm=new JPanel();
@@ -224,10 +225,11 @@ public class MainView  extends JFrame {
     }
     public void table(String[][] donnees) {
         // Tableau XML
+        this.donnees = donnees;
         final String[] entetes = { "Titre", "Auteur", "presentation", "parution","rangée","colonne","Urlimg","Status","nomPossesseur" };
         DefaultTableModel tableModel = (DefaultTableModel) tableau.getModel();
         tableModel.setColumnIdentifiers(entetes);
-        for(int i = 0;i<donnees.length;i++){
+        for(int i = 1;i<donnees.length;i++){
             tableModel.addRow(donnees[i]);
         }
         JScrollPane pane=new JScrollPane(tableau);
@@ -289,14 +291,15 @@ public class MainView  extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 int row = tableau.getSelectedRow();
                 String imgPath = new String();
-                imgPath = (String) tableau.getValueAt(row, 6);
-                sBook.setText((String) tableau.getValueAt(row, 0));
-                sAuthorName.setText((String) tableau.getValueAt(row, 1));
-                spresentation.setText((String) tableau.getValueAt(row, 2));
-                sRelease.setText((String) tableau.getValueAt(row, 3));
-                sLine.setText((String) tableau.getValueAt(row, 4));
-                scol.setText((String) tableau.getValueAt(row, 5));
-                sImage.setText((String) tableau.getValueAt(row, 6));
+                idLivre = Integer.parseInt(donnees[row][0]);
+                imgPath = (String) tableau.getValueAt(row, 7);
+                sBook.setText((String) tableau.getValueAt(row, 1));
+                sAuthorName.setText((String) tableau.getValueAt(row, 2));
+                spresentation.setText((String) tableau.getValueAt(row, 3));
+                sRelease.setText((String) tableau.getValueAt(row, 4));
+                sLine.setText((String) tableau.getValueAt(row, 5));
+                scol.setText((String) tableau.getValueAt(row, 6));
+                sImage.setText((String) tableau.getValueAt(row, 7));
 
                 statusBox.addActionListener(new ActionListener() {
                     @Override
@@ -353,7 +356,7 @@ public class MainView  extends JFrame {
     }
     public List <String> modifyView(){
         String modify;
-        modify= sBook.getText() + "," + sAuthorName.getText() + " "+ sAuthorFirstName.getText() + "," + spresentation.getText() +","+ sRelease.getText();
+        modify= idLivre + "," + sBook.getText() + "," + sAuthorName.getText() + " "+ sAuthorFirstName.getText() + "," + spresentation.getText() +","+ sRelease.getText();
         modify += "," + sLine.getText() + "," + scol.getText() + "," +sImage.getText();
         List <String> myList = new ArrayList<String>(Arrays.asList(modify.split(",")));
         return myList;
